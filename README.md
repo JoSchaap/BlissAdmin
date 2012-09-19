@@ -1,4 +1,4 @@
-DayZAdmin for Bliss
+BlissAdmin for the Bliss hive
 =========
 
 DayZ Administration panel. Windows-only version
