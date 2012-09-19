@@ -1,0 +1,13 @@
+<?php
+	defined('DS') ? null : define('DS',DIRECTORY_SEPARATOR);
+	$path = "/"; //path to the files, ex. "/admin/"
+	$iid = "1"; //Instance ID
+	$serverip = "127.0.0.1";  //game-server host
+	$rconpassword = "123456"; //rcon password
+	$serverport = 2302; //server port
+	$hostname = "127.0.0.1";  //Database host
+	$username = "dayz"; //database user
+	$password = "dayz"; //database password
+	$dbName = "dayz"; //database name
+	$sitename = "DayZ Administration"; //Admin panel name
+?>
