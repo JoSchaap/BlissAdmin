@@ -1,4 +1,4 @@
-DayZAdmin for Sanctuary
+DayZAdmin for Bliss
 =========
 
 DayZ Administration panel. Windows-only version
@@ -22,19 +22,25 @@ Correctly installed and configured Battleye RCON
 Features
 =========
 
-Lists of players and vehicles
+Lists of players and vehicles.
 
-Player/vehicle inventory, states and position
+Player/vehicle inventory, states and position.
 
-Google maps API based Cherno map with players and vehicles
+Google maps API based Cherno map with players and vehicles.
 
-Inventory check for unknown items
+Inventory check for unknown items.
 
-Search for items, vehicles, players
+Search for items, vehicles, players.
 
-Server service start/stop
+Server service start/stop.
 
-Rcon-based online players list, kick-ban features and global messaging
+Rcon-based online players list, kick-ban features and global messaging.
+
+Kick and Ban Controls.
+
+Reset Players locations.
+
+Map removeal of deploables.
 
 
 Installation
