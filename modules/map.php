@@ -51,7 +51,7 @@ if (isset($_SESSION['user_id']))
 ?>
 </div>
 <?php
-	include ('/maps/'.$show.'.php');
+	include ('maps/'.$show.'.php');
 }
 else
 {

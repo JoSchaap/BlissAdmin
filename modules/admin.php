@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id']))
 ?>
 <div id="dvPopup" style="display:none; width:900px; height: 450px; border:4px solid #000000; background-color:#FFFFFF;">
 				<a id="closebutton" style="float:right;" href="#" onclick="HideModalPopup('dvPopup'); return false;"><img src="<?php echo $path;?>images/table/action_delete.gif" alt="" /></a><br />
-				<?php include ('/modules/register.php'); ?>
+				<?php include ('modules/register.php'); ?>
 </div>
 	<div id="page-heading">
 		<h1><?php echo $pagetitle; ?></h1>

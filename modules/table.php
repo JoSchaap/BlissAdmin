@@ -62,7 +62,7 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "Online players";
 		};
 		
-	include ('/tables/'.$show.'.php');
+	include ('tables/'.$show.'.php');
 
 ?>
 
