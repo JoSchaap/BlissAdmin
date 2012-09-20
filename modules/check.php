@@ -114,13 +114,24 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 				//}
 			//}
 		//}
-		
+		$id = $row['unique_id'];
+		$playernamequery = mysql_query("SELECT * FROM profile WHERE unique_id = '".$id."' ORDER BY name");
+		$playername = mysql_fetch_array($playernamequery);
+		$name = $playername['name'];	
+		$icon1 = '<a href="admin.php?view=actions&deletecheck='.$row['id'].'"><img src="'.$path.'images/icons/player_dead.png" title="Delete '.$name.'" alt="Delete '.$name.'"/></a>';		
+		if ($row['is_dead'] == 1) {
+				$status = '<img src="'.$path.'images/icons/player_dead.png" title="'.$name.' is Dead" alt="'.$name.' is Dead"/>';
+		}
+		if ($row['is_dead'] == 0) {
+				$status = '<img src="'.$path.'images/icons/player.png" title="'.$name.' is Alive" alt="'.$name.' is Alive"/>';
+		}
 		if (count($Unknown)>0){
 			$rows .= "<tr>
-				<td><a href=\"admin.php?view=info&show=1&id=".$row['uid']."&cid=".$row['id']."\">".$row['name']."</a></td>
-				<td><a href=\"admin.php?view=info&show=1&id=".$row['uid']."&cid=".$row['id']."\">".$row['uid']."</a></td>
-				<td>top:".round((154-($Worldspace[2]/100)))." left:".round(($Worldspace[1]/100))."</td>
-				<td>";
+				<td align=\"center\" class=\"gear_preview\"><a href=\"amin.php?view=actions&deletecheck=".$row['unique_id']."\">".$icon1."</td>
+				<td align=\"center\" class=\"gear_preview\">".$status."</td>
+				<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."\">".$name."</a></td>
+				<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."\">".$row['unique_id']."</a></td>
+				<td align=\"center\" class=\"gear_preview\">";
 				foreach($Unknown as $uitem => $uval)
 				{
 					$rows .= $uval."; ";
@@ -169,9 +180,10 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Player Name</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Player ID</a></th>
-					<th class="table-header-repeat line-left"><a href="">Position</a></th>
+					<th class="table-header-repeat line-left minwidth-1" width="5px"><a href="">Remove</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1" width="5px"><a href="">Player Status</a></th>
+					<th class="table-header-repeat line-left minwidth-1" width="5px"><a href="">Player Name</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1" width="5px"><a href="">Player ID</a></th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Unknown items</a></th>
 				</tr>
 				<?

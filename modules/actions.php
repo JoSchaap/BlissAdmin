@@ -57,7 +57,7 @@ if (isset($_SESSION['user_id']))
 		}
 		if (isset($_GET["deletecheck"])){
 
-			$remquery = "Delete FROM survivor WHERE CharacterID='".$_GET["deletecheck"]."'";
+			$remquery = "Delete FROM survivor WHERE id='".$_GET["deletecheck"]."'";
 			$result = mysql_query($remquery) or die(mysql_error());
 			$class = mysql_fetch_assoc($result);
 			?>
