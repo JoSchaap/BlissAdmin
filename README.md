@@ -10,7 +10,7 @@ MySQL 5.4 or higher
 
 Apache 2.2 or higher
 
-PHP 5.3 with short_open_tag = On
+PHP 5.3 with short_open_tag = On (Should no longer be needed)
 
 Same server as for DayZ and the same database (Currently Being update to remove this need)
 
