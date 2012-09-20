@@ -4,7 +4,7 @@ if (isset($_SESSION['user_id']))
 
 ini_set( "display_errors", 0);
 error_reporting (E_ALL ^ E_NOTICE);
-require_once 'GameQ.php';
+
 
 $pagetitle = "Dashboard";
 
@@ -18,57 +18,6 @@ $xml = file_get_contents('/quicklinks.xml', true);
 
 require_once('xml2array.php');
 $quicklinks = XML2Array::createArray($xml);
-
-// Define your servers,
-// see list.php for all supported games and identifiers.
-$servers = array(
-    'server 1' => array('armedassault2', $serverip1)
-);
-
-
-// Call the class, and add your servers.
-$gq = new GameQ();
-$gq->addServers($servers);
-    
-// You can optionally specify some settings
-$gq->setOption('timeout', 200);
-
-
-// You can optionally specify some output filters,
-// these will be applied to the results obtained.
-$gq->setFilter('normalise');
-$gq->setFilter('sortplayers', 'gq_ping');
-
-// Send requests, and parse the data
-$oresults = $gq->requestData();
-//print_r($oresults);
-// Some functions to print the results
-function print_results($oresults) {
-
-    foreach ($oresults as $id => $data) {
-
-        //printf("<h2>%s</h2>\n", $id);		
-        print_table($data);
-    }
-
-}
-
-function print_table($data) {  
-
-	if (!$data['gq_online']) {
-		printf("<p>The server did not respond within the specified time.</p>\n");
-		return;
-	}			
-	?>
-	<!--  start table-content  -->
-			<h2><? echo $data['gq_hostname']; ?></h2>
-			<h2>Address:</h2><h3><? echo $data['gq_address']; ?>:<? echo $data['gq_port']; ?></h3>
-			<h2>Mods:</h2><h3><? echo $data['gq_mod']; ?></h3>
-			<h2>Max players:</h2><h3><? echo $data['gq_maxplayers']; ?></h3>
-			<h2>Online players:</h2><h3><? echo $data['gq_numplayers']; ?></h3>	
-		<!--  end table-content  -->
-	<?
-}
 
 ?>
 <div id="page-heading">
