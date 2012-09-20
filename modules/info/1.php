@@ -1,4 +1,4 @@
-<?
+<?php
 $cid = '';
 if (isset($_GET['cid'])){
 	$cid = " AND id ='".$_GET['cid']."'";
@@ -85,18 +85,18 @@ while ($row=mysql_fetch_array($res)) {
 
 ?>	
 	<div id="page-heading">
-		<h1><? echo "<title>".$rowname['name']." - ".$sitename."</title>"; ?></h1>
-		<h1><? echo $rowname['name']; ?> - <? echo $row['unique_id']; ?> - Last save: <? echo $row['last_update']; ?></h1>
+		<h1><?php echo "<title>".$rowname['name']." - ".$sitename."</title>"; ?></h1>
+		<h1><? phpecho $rowname['name']; ?> - <?php echo $row['unique_id']; ?> - Last save: <?php echo $row['last_update']; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<? echo $path; ?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path; ?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<? echo $path; ?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path; ?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -108,15 +108,15 @@ while ($row=mysql_fetch_array($res)) {
 			<div id="table-content">
 				<div id="gear_player">	
 					<div class="gear_info">
-						<img class="playermodel" src='<? echo $path; ?>images/models/<? echo str_replace('"', '', $model); ?>.png'/>
+						<img class="playermodel" src='<?php echo $path; ?>images/models/<? echo str_replace('"', '', $model); ?>.png'/>
 						<div id="gps" style="margin-left:46px;margin-top:54px">
 							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:13px">
-							<?
+							<?php
 								echo round(($Worldspace[0]/100));
 							?>
 							</div>
 							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:34px">
-							<?
+							<?php
 								if(array_key_exists(3,$Worldspace)){
 									echo round(($Worldspace[3]/100));
 								} else {
@@ -126,33 +126,33 @@ while ($row=mysql_fetch_array($res)) {
 							?>
 							</div>
 							<div class="gpstext" style="width:120px;margin-left:13px;margin-top:61px">
-							<?
+							<?php
 								echo sprintf("%03d",round($Worldspace[1]/100)).sprintf("%03d",round((154-($Worldspace[2]/100))));
 							?>
 							</div>							
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-120px">
-							<?echo 'Zed kills:&nbsp;'.$row['zombie_kills'].' / '.$rowname['total_zombie_kills'];?>
+							<?php echo 'Zed kills:&nbsp;'.$row['zombie_kills'].' / '.$rowname['total_zombie_kills'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-100px">
-							<?echo 'Zed headshots:&nbsp;'.$row['headshots'].' / '.$rowname['total_headshots'];?>
+							<?php echo 'Zed headshots:&nbsp;'.$row['headshots'].' / '.$rowname['total_headshots'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-80px">
-							<?echo 'Human killed:&nbsp;'.$row['survivor_kills'].' / '.$rowname['total_survivor_kills'];?>
+							<?php echo 'Human killed:&nbsp;'.$row['survivor_kills'].' / '.$rowname['total_survivor_kills'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-60px">
-							<?echo 'Bandit killed:&nbsp;'.$row['bandit_kills'].' / '.$rowname['total_bandit_kills'];?>
+							<?php echo 'Bandit killed:&nbsp;'.$row['bandit_kills'].' / '.$rowname['total_bandit_kills'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-40px">
-							<?echo 'Survival Attempts:&nbsp;'.$rowname['survival_attempts'];?>
+							<?php echo 'Survival Attempts:&nbsp;'.$rowname['survival_attempts'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-20px">
-							<?echo 'Total Survival Time:&nbsp;'.$rowname['total_survival_time'];?>
+							<?php echo 'Total Survival Time:&nbsp;'.$rowname['total_survival_time'];?>
 						</div>
 					</div>
 					<div class="gear_inventory">
 						<div class="gear_slot" style="margin-left:1px;margin-top:48px;width:80px;height:80px;">
-						<?
+						<?php
 							if(array_key_exists(0,$binocular)){
 								echo $binocular[0];
 							} else {
@@ -161,7 +161,7 @@ while ($row=mysql_fetch_array($res)) {
 						?>
 						</div>
 						<div class="gear_slot" style="margin-left:292px;margin-top:48px;width:80px;height:80px;">
-						<?
+						<?php
 							if(array_key_exists(1,$binocular)){
 								echo $binocular[1];
 							} else {
@@ -170,12 +170,12 @@ while ($row=mysql_fetch_array($res)) {
 						?>
 						</div>
 						<div class="gear_slot" style="margin-left:0px;margin-top:130px;width:224px;height:96px;">
-							<?
+							<?php
 								echo $rifle;
 							?>
 						</div>
 						<div class="gear_slot" style="margin-left:0px;margin-top:228px;width:224px;height:96px;">
-						<?							
+						<?php					
 							if(array_key_exists(0, $Backpack)){
 								echo '<img style="max-width:220px; max-height:92px;" src="'.$path.'images/thumbs/'.$Backpack[0].'.png" title="'.$Backpack[0].'" alt="'.$Backpack[0].'"/>';
 							} else {
@@ -184,11 +184,11 @@ while ($row=mysql_fetch_array($res)) {
 						?>
 						</div>
 						<div class="gear_slot" style="margin-left:30px;margin-top:326px;width:96px;height:96px;">
-						<?
+						<?php
 							echo $pistol;
 						?>
 						</div>
-						<?							
+						<?php					
 							$jx = 226;
 							$jy = 130;
 							$jk = 0;
@@ -253,7 +253,7 @@ while ($row=mysql_fetch_array($res)) {
 					</div>
 					<!-- Backpack -->
 					<div class="gear_backpack">						
-						<?
+						<?php
 							$maxmagazines = 24;
 							$BackpackName = $Backpack[0];
 							if(array_key_exists('s'.$Backpack[0],$items_xml['items'])){
@@ -354,7 +354,7 @@ while ($row=mysql_fetch_array($res)) {
 							}	 			
 						?>
 						<div class="backpackname">
-						<?
+						<?php
 							echo $BackpackName.'&nbsp;&nbsp;(&nbsp;'.$freeslots.'&nbsp;/&nbsp;'.$maxmagazines.'&nbsp;)';
 						?>
 						</div>
@@ -363,7 +363,7 @@ while ($row=mysql_fetch_array($res)) {
 				</div>			
 			</div>
 			<!--  end table-content  -->
-			<?
+			<?php
 			echo $debug;
 			?>
 			<div class="clear"></div>
@@ -379,5 +379,5 @@ while ($row=mysql_fetch_array($res)) {
 		<th class="sized bottomright"></th>
 	</tr>
 	</table>
-<? } ?>
+<?php } ?>
 	<div class="clear">&nbsp;</div>

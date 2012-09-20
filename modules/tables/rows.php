@@ -1,4 +1,4 @@
-<?
+<?php
 
 function header_player($show){
 	return '<tr>

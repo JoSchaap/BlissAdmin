@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_SESSION['user_id']))
 {	
 	//if (isset($_GET["url"])){
@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=table&show=0';
 			</script>
-			<?
+			<?php
 		}
 		if (isset($_GET["ban"])){
 			$cmd = "ban ".$_GET["ban"];
@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=table&show=0';
 			</script>
-			<?
+			<?php
 		}	
 		if (isset($_POST["say"])){
 			$id = "-1";
@@ -40,7 +40,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php';
 			</script>
-			<?
+			<?php
 		}
 		if (isset($_GET["delete"])){
 
@@ -53,7 +53,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=map&show=7';
 			</script>
-			<?
+			<?php
 		}
 		if (isset($_GET["deletecheck"])){
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=check';
 			</script>
-			<?
+			<?php
 		}
 		if (isset($_GET["deletespawns"])){
 
@@ -75,7 +75,7 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=map&show=8';
 			</script>
-			<?
+			<?php
 		}
 		if (isset($_GET["resetlocation"])){
 
@@ -88,14 +88,14 @@ if (isset($_SESSION['user_id']))
 			<script type="text/javascript">
 				window.location = 'admin.php?view=table&show=0';
 			</script>
-			<?
+			<?php
 		}		
 	//}
 	?>
 	<script type="text/javascript">
 		window.location = 'admin.php';
 	</script>
-	<?
+	<?php
 
 	
 	

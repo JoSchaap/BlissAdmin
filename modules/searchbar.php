@@ -1,4 +1,4 @@
-<? 
+<?php 
 if (isset($_SESSION['user_id']))
 {
 ?>
@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id']))
 	</form>
 
 <!--  end top-search -->
-<?
+<?php
 }
 else
 {

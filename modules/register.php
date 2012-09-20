@@ -27,11 +27,11 @@ if (empty($_POST))
 	</div>
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -174,13 +174,13 @@ else
 			<table border="0" width="100%" cellpadding="0" cellspacing="0">
 			<tr>
 				<td class="green-left">New admin is succesfully registered!</td>
-				<td class="green-right"><a href="#" onclick="window.location.href = 'admin.php?view=admin';" class="close-green"><img src="<?echo $path;?>images/table/icon_close_green.gif" alt="" /></a></td>
+				<td class="green-right"><a href="#" onclick="window.location.href = 'admin.php?view=admin';" class="close-green"><img src="<?php echo $path;?>images/table/icon_close_green.gif" alt="" /></a></td>
 			</tr>
 			</table>
 			</div>
 		</div>
 		<!--  end message-green -->
-		<?
+		<?php
 	}
 	else
 	{
@@ -194,9 +194,9 @@ else
 			</tr>
 			</table>
 			</div>
-			<? print $errort;?>
+			<?php print $errort;?>
 		</div>
-		<?
+		<?php
 		
 	}
 

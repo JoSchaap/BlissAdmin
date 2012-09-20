@@ -1,4 +1,4 @@
-<? 
+<?php
 include ('config.php');
 if (isset($_SESSION['user_id']))
 {
@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id']))
 			<!-- <div class="showhide-account"><img src="images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
 			<a href="/admin.php?view=register" id="logout"><img src="images/shared/nav/nav_myaccount.gif" width="64" height="14" alt="" /></a>
 			<div class="nav-divider">&nbsp;</div>-->
-			<a href="admin.php?logout" id="logout"><img src="<?echo $path;?>images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+			<a href="admin.php?logout" id="logout"><img src="<?php echo $path;?>images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>
 		
 			<!--  start account-content -->	
@@ -57,7 +57,7 @@ if (isset($_SESSION['user_id']))
 				</li>
 				<li class="li-users parent root"><span class=" daddy item"><span>Entities</span></span>
 					<ul class="level2 parent-users">
-					<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Instance ID:<? echo $iid?></a>
+					<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Instance ID:<?php echo $iid?></a>
 						<ul class="level3 parent-user-manager">
 						<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Players</a>
 							<ul class="level3 parent-user-manager">
@@ -95,7 +95,7 @@ if (isset($_SESSION['user_id']))
 				</li>
 				<li class="li-users parent root"><span class=" daddy item"><span>Map view</span></span>
 					<ul class="level2 parent-users">
-						<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Instance ID:<? echo $iid?></a>
+						<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Instance ID:<?php echo $iid?></a>
 							<ul class="level3 parent-user-manager">
 							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Players</a>
 							<ul class="level3 parent-groups">
@@ -139,7 +139,7 @@ if (isset($_SESSION['user_id']))
 <!--  start nav-outer -->
 </div>
 <!--  start nav-outer-repeat................................................... END -->
-<?
+<?php
 }
 else
 {

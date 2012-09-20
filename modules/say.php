@@ -1,4 +1,4 @@
-<? 
+<?php 
 if (isset($_SESSION['user_id']))
 {
 ?>
@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']))
 	<br />
 
 <!--  end say-box -->
-<?
+<?php
 }
 else
 {

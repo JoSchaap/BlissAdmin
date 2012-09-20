@@ -47,12 +47,12 @@ if (isset($_SESSION['user_id']))
 
 ?>
 <div id="dvPopup" style="display:none; width:900px; height: 450px; border:4px solid #000000; background-color:#FFFFFF;">
-				<a id="closebutton" style="float:right;" href="#" onclick="HideModalPopup('dvPopup'); return false;"><img src="<?echo $path;?>images/table/action_delete.gif" alt="" /></a><br />
-				<? include ('/modules/register.php'); ?>
+				<a id="closebutton" style="float:right;" href="#" onclick="HideModalPopup('dvPopup'); return false;"><img src="<?php echo $path;?>images/table/action_delete.gif" alt="" /></a><br />
+				<?php include ('/modules/register.php'); ?>
 </div>
 	<div id="page-heading">
-		<h1><? echo $pagetitle; ?></h1>
-		<h1><? echo "<title>".$pagetitle." - ".$sitename."</title>"; ?></h1>
+		<h1><?php echo $pagetitle; ?></h1>
+		<h1><?php echo "<title>".$pagetitle." - ".$sitename."</title>"; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -60,26 +60,26 @@ if (isset($_SESSION['user_id']))
 	
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
 		<td>
 		<!--  start content-table-inner ...................................................................... START -->
 		<div id="content-table-inner">
-			<? echo $delresult; ?>
+			<?php echo $delresult; ?>
 			<div id="related-activities">
 				<div id="related-act-top">
-					<img width="271" height="43" alt="" src="<?echo $path;?>images/forms/header_related_act.gif">
+					<img width="271" height="43" alt="" src="<?php echo $path;?>images/forms/header_related_act.gif">
 				</div>
 				<div id="related-act-bottom">
 					<div id="related-act-inner">
 						<div class="left"><a href="#" onclick="ShowModalPopup('dvPopup'); return false;">
-							<img width="21" height="21" alt="" src="<?echo $path;?>images/forms/icon_plus.gif"></a>
+							<img width="21" height="21" alt="" src="<?php echo $path;?>images/forms/icon_plus.gif"></a>
 						</div>
 						<div class="right">
 							<h5><a href="#" onclick="ShowModalPopup('dvPopup'); return false;">Add admin</a></h5>
@@ -100,7 +100,7 @@ if (isset($_SESSION['user_id']))
 					<th class="table-header-repeat line-left minwidth-1" width="75%"><a href="">Login</a></th>
 					<th class="table-header-repeat line-left minwidth-1" width="20%"><a href="">Last access</a></th>
 				</tr>
-				<? echo $users; ?>				
+				<?php echo $users; ?>				
 				</table>
 				<input type="submit" class="submit-login"  />
 				</div>
@@ -121,7 +121,7 @@ if (isset($_SESSION['user_id']))
 	</tr>
 	</table>
 	<div class="clear">&nbsp;</div>
-<?
+<?php
 }
 else
 {

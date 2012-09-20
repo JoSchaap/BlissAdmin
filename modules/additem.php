@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_SESSION['user_id']))
 {
 	$pagetitle = "Add item";
@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id']))
 ?>
 
 <div id="page-heading">
-<?
+<?php
 	echo "<title>".$pagetitle." - ".$sitename."</title>";
 	echo "<h1>".$pagetitle."</h1>";
 ?>
@@ -41,7 +41,7 @@ if (isset($_SESSION['user_id']))
 	</tr>
 	</table>
 	<div class="clear">&nbsp;</div>
-<?
+<?php
 }
 else
 {

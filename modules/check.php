@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_SESSION['user_id']))
 {
 $pagetitle = "Items check";
@@ -8,7 +8,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 ?>
 
 <div id="page-heading">
-<?
+<?php
 	echo "<title>".$pagetitle." - ".$sitename."</title>";
 	echo "<h1>".$pagetitle."</h1>";
 	
@@ -149,11 +149,11 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 </div>
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -164,14 +164,14 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 			<!--  start table-content  -->
 			<div id="table-content">
 			<!--  start message-red -->
-			<?
+			<?php
 			if ($itemscount>0){
 			?>
 				<div id="message-red">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
-					<td class="red-left">WARNING! <? echo $itemscount;?> unknown items found!</td>
-					<td class="red-right"><a class="close-red"><img src="<?echo $path;?>images/table/icon_close_red.gif"   alt="" /></a></td>
+					<td class="red-left">WARNING! <?php echo $itemscount;?> unknown items found!</td>
+					<td class="red-right"><a class="close-red"><img src="<?php echo $path;?>images/table/icon_close_red.gif"   alt="" /></a></td>
 				</tr>
 				</table>
 				</div>			
@@ -186,13 +186,13 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 					<th class="table-header-repeat line-left minwidth-1" width="5px"><a href="">Player ID</a></th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Unknown items</a></th>
 				</tr>
-				<?
+				<?php
 					echo $rows;
 				?>				
 				</table>
 				<!--  end product-table................................... --> 
 
-			<?
+			<?php
 			}
 			?>
 			</div>
@@ -212,7 +212,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 	</tr>
 	</table>
 	<div class="clear">&nbsp;</div>
-<?
+<?php
 }
 else
 {

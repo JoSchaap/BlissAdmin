@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_SESSION['user_id']))
 {
 ?>
@@ -10,7 +10,7 @@ if (isset($_SESSION['user_id']))
         // Google Maps Demo
         //////////////////////////////////
 		
-		<?
+		<?php
 		echo $markers;
 		?>
 		function degreesToRadians(deg) {
@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']))
 		  }
 	  
         var Demo = Demo || {};
-        Demo.ImagesBaseUrl = '<? echo $path; ?>tiles/';
+        Demo.ImagesBaseUrl = '<?php echo $path; ?>tiles/';
 		var infowindow = null;
 		var marker = null;
 
@@ -292,7 +292,7 @@ if (isset($_SESSION['user_id']))
     /* ]]> */
     </script>
 
-<?
+<?php
 }
 else
 {

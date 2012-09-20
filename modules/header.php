@@ -49,7 +49,7 @@ $(function() {
 
 	<!-- start logo -->
 	<div id="logo">
-		<a href=""><img src="<?echo $path;?>images/logo.png" width="150px" height="72px" alt="" /></a>
+		<a href=""><img src="<?php echo $path;?>images/logo.png" width="150px" height="72px" alt="" /></a>
 	</div>
 	<!-- end logo -->
 	
@@ -59,7 +59,7 @@ $(function() {
 	
 	<!--  start top-search -->
 	<div id="top-search">
-	<? 
+	<?php
 	include ('searchbar.php');
 	?>
 	</div>
@@ -74,7 +74,7 @@ $(function() {
 	
 <div class="clear">&nbsp;</div>
  
-<? 
+<?php
 include ('navbar.php');
 ?>
  <div class="clear"></div>
@@ -83,7 +83,7 @@ include ('navbar.php');
 <div id="content-outer">
 <!-- start content -->
 <div id="content">
-<?
+<?php
 }
 else
 {

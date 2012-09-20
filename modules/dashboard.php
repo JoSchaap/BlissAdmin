@@ -1,4 +1,4 @@
-<? 
+<?php
 if (isset($_SESSION['user_id']))
 {
 
@@ -21,7 +21,7 @@ $quicklinks = XML2Array::createArray($xml);
 
 ?>
 <div id="page-heading">
-<?
+<?php
 	echo "<title>".$pagetitle." - ".$sitename."</title>";
 	echo "<h1>".$pagetitle."</h1>";
 
@@ -29,26 +29,17 @@ $quicklinks = XML2Array::createArray($xml);
 </div>
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
 		<td>
 		<div id="content-table-inner">	
 		<!--  start content-table-inner ...................................................................... START -->
-		<table border="0" width="100%" cellpadding="0" cellspacing="0">
-			<tr>
-				<td width="100%">	
-					<?	
-						include ('say.php');
-					?>
-				</td>
-			</tr>
-		</table>
 		<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 			<tr>
 				<th class="table-header-repeat line-left minwidth-1"><a href="">Quick links</a>	</th>
@@ -63,7 +54,7 @@ $quicklinks = XML2Array::createArray($xml);
 							<li>
 								<a href="<?php echo $ql['Link']; ?>" style="color: #000;">
 									<span class="quicklink-box">
-										<img src="<?echo $path;?>images/icons/<?php echo $ql['Icon']; ?>" alt="<?php echo $ql['Name']; ?>" /><br />
+										<img src="<?php echo $path;?>images/icons/<?php echo $ql['Icon']; ?>" alt="<?php echo $ql['Name']; ?>" /><br />
 										<strong><?php echo $ql['Name']; ?></strong>
 									</span>
 								</a>
@@ -77,7 +68,16 @@ $quicklinks = XML2Array::createArray($xml);
 					<textarea cols="68" rows="12" readonly><?php echo $logs; ?></textarea>
 				</td>	
 			</tr>				
-		</table>			
+		</table>	
+		<table border="0" width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="100%">	
+					<?php
+						include ('say.php');
+					?>
+				</td>
+			</tr>
+		</table>		
 		<!--  end content-table-inner ............................................END  -->
 		</div>
 		</td>
@@ -90,7 +90,7 @@ $quicklinks = XML2Array::createArray($xml);
 	</tr>
 	</table>
 	<div class="clear">&nbsp;</div>
-<?
+<?php
 }
 else
 {

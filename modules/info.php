@@ -1,4 +1,4 @@
-<? 
+<?php
 $debug = '';
 //ob_end_clean();
 if (isset($_SESSION['user_id']))

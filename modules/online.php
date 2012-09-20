@@ -51,17 +51,17 @@ function print_table($data) {
 	
 ?>	
 	<div id="page-heading">
-		<h1><? echo $data['gq_hostname']; ?></h1>
+		<h1><?php echo $data['gq_hostname']; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<?echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path;?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -72,10 +72,10 @@ function print_table($data) {
 			<!--  start table-content  -->
 			<div id="table-content">
 			
-			<h2>Address:</h2><h3><? echo $data['gq_address']; ?>:<? echo $data['gq_port']; ?></h3>
-			<h2>Mods:</h2><h3><? echo $data['gq_mod']; ?></h3>
-			<h2>Max players:</h2><h3><? echo $data['gq_maxplayers']; ?></h3>
-			<h2>Online players:</h2><h3><? echo $data['gq_numplayers']; ?></h3>
+			<h2>Address:</h2><h3><?php echo $data['gq_address']; ?>:<? echo $data['gq_port']; ?></h3>
+			<h2>Mods:</h2><h3><?php echo $data['gq_mod']; ?></h3>
+			<h2>Max players:</h2><h3><?php echo $data['gq_maxplayers']; ?></h3>
+			<h2>Online players:</h2><h3><?php echo $data['gq_numplayers']; ?></h3>
 					
 			<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 			<tr>
@@ -86,7 +86,7 @@ function print_table($data) {
 				<th class="table-header-repeat line-left"><a href="">Inventory</a></th>
 				<th class="table-header-repeat line-left"><a href="">Backpack</a></th>
 			</tr>
-			<?
+			<?php
 			$players = $data['players'];		
 			
 			
@@ -129,7 +129,7 @@ function print_table($data) {
 	</tr>
 	</table>
 	<div class="clear">&nbsp;</div>
-<?
+<?php
 }
     print_results($oresults);
 }

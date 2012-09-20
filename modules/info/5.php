@@ -1,4 +1,4 @@
-<?
+<?php
 $query = "SELECT * FROM spawns WHERE id = ".$_GET["id"]." LIMIT 1"; 
 $res = mysql_query($query) or die(mysql_error());
 $number = mysql_num_rows($res);
@@ -9,17 +9,17 @@ while ($row=mysql_fetch_array($res)) {
 	$Worldspace = explode(",", $Worldspace);
 ?>	
 	<div id="page-heading">
-		<h1><? echo $row['otype']; ?> - <? echo $row['id']; ?></h1>
+		<h1><?php echo $row['otype']; ?> - <?php echo $row['id']; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="<? echo $path; ?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path; ?>images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="<? echo $path; ?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo $path; ?>images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -36,9 +36,9 @@ while ($row=mysql_fetch_array($res)) {
 				<th class="table-header-repeat line-left minwidth-1"><a href="">Info</a></th>
 			</tr>
 			<tr>
-				<td align="center"><img src='<? echo $path; ?>images/vehicles/<? echo $row['otype']; ?>.png'></td>
+				<td align="center"><img src='<?php echo $path; ?>images/vehicles/<?php echo $row['otype']; ?>.png'></td>
 				<td>
-					<h2>Position:</h2><h3><? echo "left:".round(($Worldspace[1]/100))." top:".round((154-($Worldspace[2]/100))); ?></h3>
+					<h2>Position:</h2><h3><?php echo "left:".round(($Worldspace[1]/100))." top:".round((154-($Worldspace[2]/100))); ?></h3>
 				</td>	
 			</tr>				
 			</table>
@@ -59,5 +59,5 @@ while ($row=mysql_fetch_array($res)) {
 		<th class="sized bottomright"></th>
 	</tr>
 	</table>
-<? } ?>
+<?php } ?>
 	<div class="clear">&nbsp;</div>
