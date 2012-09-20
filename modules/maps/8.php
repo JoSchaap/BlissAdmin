@@ -113,7 +113,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 			}
 		}
 		
-	$queryvehicles = "SELECT * from objects where damage < 0.95";
+	$queryvehicles = "SELECT * from objects where damage < 0.95 AND instance = " . $iid;
 	$resvehicles = mysql_query($queryvehicles) or die(mysql_error());
 	$k = 0;
 	while ($rowvehicles=mysql_fetch_array($resvehicles)) {
