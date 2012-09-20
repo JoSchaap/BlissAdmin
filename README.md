@@ -12,9 +12,7 @@ Apache 2.2 or higher
 
 PHP 5.3 with short_open_tag = On
 
-Desktop interaction allowed for Apache
-
-Same server as for DayZ and the same database
+Same server as for DayZ and the same database (Currently Being update to remove this need)
 
 Correctly installed and configured Battleye RCON
 
@@ -32,11 +30,7 @@ Inventory check for unknown items.
 
 Search for items, vehicles, players.
 
-Server service start/stop.
-
 Rcon-based online players list, kick-ban features and global messaging.
-
-Kick and Ban Controls.
 
 Reset Players locations.
 
