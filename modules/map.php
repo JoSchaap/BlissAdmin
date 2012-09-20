@@ -36,7 +36,6 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "Current Ingame Deployed Items";	
 			break;
 		case 8:
-			$query = "SELECT * from objects where damage < 0.95";
 			$pagetitle = "Online Players and Vehicles";
 			break;			
 		default:
