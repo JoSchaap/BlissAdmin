@@ -32,13 +32,6 @@ if (isset($_SESSION['user_id']))
 		else $el = stripslashes($el); 
 	}
 
-	if (ini_get('magic_quotes_gpc'))
-	{
-		slashes($_GET);
-		slashes($_POST);    
-		slashes($_COOKIE);
-	}
-
 	if (isset($_GET["show"])){
 		$show = $_GET["show"];
 	}else{
