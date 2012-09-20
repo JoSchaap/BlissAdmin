@@ -34,7 +34,11 @@ if (isset($_SESSION['user_id']))
 		case 7:
 			$query = "SELECT * FROM objects WHERE otype = 'Wire_cat1' OR otype = 'Hedgehog_DZ' OR otype = 'TrapBear' OR otype = 'Sandbag1_DZ' AND instance = " . $iid;;
 			$pagetitle = "Current Ingame Deployed Items";	
-			break;				
+			break;
+		case 8:
+			$query = "SELECT * from objects where damage < 0.95";
+			$pagetitle = "Online Players and Vehicles";
+			break;			
 		default:
 			$pagetitle = "Online players";
 		};

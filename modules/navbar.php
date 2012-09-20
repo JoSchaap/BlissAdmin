@@ -107,6 +107,7 @@ if (isset($_SESSION['user_id']))
 										<li class="li-add-new-group"><a href="admin.php?view=map&show=6" class="class:newarticle item">All Ingame Tents</a></li>
 								<li class="li-add-new-group"><a href="admin.php?view=map&show=7" class="class:newarticle item">Other Deployables</a></li>
 							</ul>
+							<li class="li-add-new-user"><a href="admin.php?view=map&show=8" class="class:newarticle item">Everything</a></li>
 						</li>
 							</ul>
 						</li>
