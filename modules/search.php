@@ -39,7 +39,7 @@ if (isset($_SESSION['user_id']))
 			$good = trim(preg_replace("/\s(\S{1,2})\s/", " ", preg_replace("[ +]", "  "," $search ")));
 			$good = preg_replace("[ +]", " ", $good);
 			$logic = "OR";		
-			
+
 			?>
 			<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 			<?
@@ -47,7 +47,7 @@ if (isset($_SESSION['user_id']))
 				case 'player':
 					$tableheader = header_player(0);
 					echo $tableheader;
-					$playerquery = "SELECT * FROM main WHERE name LIKE '%". str_replace(" ", "%' OR name LIKE '%", $good). "%' ORDER BY lastupdate DESC"; 
+					$playerquery = "select profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id and name LIKE '%". str_replace(" ", "%' OR name LIKE '%", $good). "%' ORDER BY last_update DESC"; 
 					$result = mysql_query($playerquery) or die(mysql_error());
 					$tablerows = "";
 					while ($row=mysql_fetch_array($result)) {
@@ -58,7 +58,7 @@ if (isset($_SESSION['user_id']))
 				case 'item':
 					$tableheader = header_player(0);
 					echo $tableheader;
-					$query = "SELECT * FROM main WHERE inventory LIKE '%". str_replace(" ", "%' OR backpack LIKE '%", $good). "%'"." ORDER BY lastupdate DESC";
+					$query = "SELECT * from (SELECT profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id) as T where inventory LIKE '%". str_replace(" ", "%' OR backpack LIKE '%", $good). "%'"." ORDER BY last_update DESC";
 					$result = mysql_query($query) or die(mysql_error());
 					$tablerows = "";
 					while ($row=mysql_fetch_array($result)) {
@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id']))
 				default:
 					$tableheader = header_player(0);
 					echo $tableheader;
-					$playerquery = "SELECT * FROM main WHERE name LIKE '%". str_replace(" ", "%' OR name LIKE '%", $good). "%' ORDER BY lastupdate DESC"; 
+					$playerquery = "select profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id and name LIKE '%". str_replace(" ", "%' OR name LIKE '%", $good). "%' ORDER BY lastupdate DESC"; 
 					$result = mysql_query($playerquery) or die(mysql_error());
 					$tablerows = "";
 					while ($row=mysql_fetch_array($result)) {
@@ -106,7 +106,7 @@ if (isset($_SESSION['user_id']))
 		}
 		else
 		{
-		
+
 		}
 		?>		
 		<!--  end content-table-inner ............................................END  -->
@@ -125,6 +125,6 @@ if (isset($_SESSION['user_id']))
 }
 else
 {
-	header('Location: admin.php');
+	header('Location: index.php');
 }
 ?>
