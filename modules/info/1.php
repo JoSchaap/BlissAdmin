@@ -86,7 +86,7 @@ while ($row=mysql_fetch_array($res)) {
 ?>	
 	<div id="page-heading">
 		<h1><?php echo "<title>".$rowname['name']." - ".$sitename."</title>"; ?></h1>
-		<h1><? phpecho $rowname['name']; ?> - <?php echo $row['unique_id']; ?> - Last save: <?php echo $row['last_update']; ?></h1>
+		<h1><?php echo $rowname['name']; ?> - <?php echo $row['unique_id']; ?> - Last save: <?php echo $row['last_update']; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -108,7 +108,7 @@ while ($row=mysql_fetch_array($res)) {
 			<div id="table-content">
 				<div id="gear_player">	
 					<div class="gear_info">
-						<img class="playermodel" src='<?php echo $path; ?>images/models/<? echo str_replace('"', '', $model); ?>.png'/>
+						<img class="playermodel" src='<?php echo $path; ?>images/models/<?php echo str_replace('"', '', $model); ?>.png'/>
 						<div id="gps" style="margin-left:46px;margin-top:54px">
 							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:13px">
 							<?php
