@@ -10,11 +10,11 @@ MySQL 5.4 or higher
 
 Apache 2.2 or higher
 
-PHP 5.3 with short_open_tag = On (Should no longer be needed)
-
-Same server as for DayZ and the same database (Currently Being update to remove this need)
+PHP 5.3 
 
 Correctly installed and configured Battleye RCON
+
+Linux Support (Close pending path issues)
 
 
 Features
@@ -35,6 +35,8 @@ Rcon-based online players list, kick-ban features and global messaging.
 Reset Players locations.
 
 Map removeal of deploables.
+
+Live Map view (Working on)
 
 
 Installation
