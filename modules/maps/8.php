@@ -130,7 +130,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 		$result = mysql_query($query) or die(mysql_error());
 		$class = mysql_fetch_assoc($result);		
 
-		$description = "<h2><a href=\"index.php?view=info&show=4&id=".$rowvehicles['id']."\">".$rowvehicles['otype']."</a></h2><table><tr><td><img style=\"max-width: 100px;\" src=\"".$path."images/vehicles/".$rowvehicles['otype'].".png\"></td><td>&nbsp;</td><td style=\"vertical-align:top; \"><h2>Position:</h2>left:".round(($y/100))." top:".round(((15360-$x)/100))."</td></tr></table>";
+		$description = "<h2><a href=\"admin.php?view=info&show=4&id=".$rowvehicles['id']."\">".$rowvehicles['otype']."</a></h2><table><tr><td><img style=\"max-width: 100px;\" src=\"".$path."images/vehicles/".$rowvehicles['otype'].".png\"></td><td>&nbsp;</td><td style=\"vertical-align:top; \"><h2>Position:</h2>left:".round(($y/100))." top:".round(((15360-$x)/100))."</td></tr></table>";
 		$markers .= "['".$rowvehicles['otype']."', '".$description."',".$y.", ".($x+1024).", ".$k++.", '".$path."images/icons/".$class['Type'].".png'],";
 	};
 	}

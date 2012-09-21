@@ -38,8 +38,8 @@ while ($row=mysql_fetch_array($res)) {
 	$usableitems = array();
 
 	//$items_ini = parse_ini_file("/items.ini", true);
-	$xml = file_get_contents('/items.xml', true);
-	require_once('/modules/xml2array.php');
+	$xml = file_get_contents('items.xml', true);
+	require_once('modules/xml2array.php');
 	$items_xml = XML2Array::createArray($xml);
 	
 	$Inventory = (array_merge($Inventory[0], $Inventory[1]));
