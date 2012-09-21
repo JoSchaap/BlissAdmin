@@ -14,7 +14,7 @@ $res = mysql_query($query) or die(mysql_error());
 while ($row=mysql_fetch_array($res)) {
 	$logs .= $row['timestamp'].' '.$row['user'].': '.$row['action'].chr(13);
 }
-$xml = file_get_contents('/quicklinks.xml', true);
+$xml = file_get_contents('quicklinks.xml', true);
 
 require_once('xml2array.php');
 $quicklinks = XML2Array::createArray($xml);
