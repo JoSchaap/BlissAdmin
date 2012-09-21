@@ -54,7 +54,7 @@ function row_player($row){
 			$curitem = $Inventory[$i];
 			$icount = "";
 			if (is_array($curitem)){$curitem = $Inventory[$i][0]; $icount = ' - '.$Inventory[$i][1].' rounds'; }
-			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
+			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
 		} else {
 			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
@@ -93,12 +93,12 @@ function row_player($row){
 					$curitem = $Backpack[$i][0]; $icount = ' - '.$Backpack[$i][1].' rounds';
 				}
 			}
-			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
+			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
 		} else {
 			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
 	}
-	$icon = '<img src="'.$path.'images/icons/player'.($row['is_dead'] ? '_dead' : '').'.png" title="" alt=""/>';
+	$icon = '<img src="images/icons/player'.($row['is_dead'] ? '_dead' : '').'.png" title="" alt=""/>';
 	
 	$tablerow = "<tr>
 		<td align=\"center\" class=\"gear_preview\">".$icon."</td>
@@ -111,7 +111,7 @@ function row_player($row){
 	return $tablerow;	
 }
 
-function row_online_player($row, $player, $path){
+function row_online_player($row, $player){
 	$queryinfo = "SELECT * FROM survivor WHERE is_dead=0 AND unique_id = '" . $row['unique_id'] . "'";
 	$resinfo = mysql_query($queryinfo) or die(mysql_error());								
 	$rowinfo = mysql_fetch_array($resinfo);
@@ -144,7 +144,7 @@ function row_online_player($row, $player, $path){
 			$curitem = $Inventory[$p];
 			$pcount = "";
 			if (is_array($curitem)){$curitem = $Inventory[$p][0]; $pcount = ' - '.$Inventory[$p][1].' rounds'; }
-			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/thumbs/'.$curitem.'.png" title="'.$curitem.$pcount.'" alt="'.$curitem.$pcount.'"/></div>';
+			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.$pcount.'" alt="'.$curitem.$pcount.'"/></div>';
 		} else {
 			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
@@ -187,7 +187,7 @@ function row_online_player($row, $player, $path){
 					$curitem = $Backpack[$p][0]; $pcount = ' - '.$Backpack[$p][1].' rounds';
 				}
 			}
-			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/thumbs/'.$curitem.'.png" title="'.$curitem.$pcount.'" alt="'.$curitem.$pcount.'"/></div>';
+			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.$pcount.'" alt="'.$curitem.$pcount.'"/></div>';
 		} else {
 			$BackpackPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
@@ -196,9 +196,9 @@ function row_online_player($row, $player, $path){
 	$uid = "<a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."\">".$row["unique_id"]."</a>";
 	
 
-	$icon = '<a href="admin.php?view=actions&kick='.$player[0].'"><img src="'.$path.'images/icons/player.png" title="Kick '.$player[4].'" alt="Kick '.$player[4].'"/></a>';
-	$icon1 = '<a href="admin.php?view=actions&ban='.$player[0].'"><img src="'.$path.'images/icons/player_dead.png" title="Ban '.$player[4].'" alt="Ban '.$player[4].'"/></a>';
-	$icon2 = '<a href="admin.php?view=actions&resetlocation='.$rowinfo['id'].'"><img src="'.$path.'images/icons/wire.png" title="ResetLocation '.$player[4].'" alt="ResetLocation '.$row['id'].'"/></a>';
+	$icon = '<a href="admin.php?view=actions&kick='.$player[0].'"><img src="images/icons/player.png" title="Kick '.$player[4].'" alt="Kick '.$player[4].'"/></a>';
+	$icon1 = '<a href="admin.php?view=actions&ban='.$player[0].'"><img src="images/icons/player_dead.png" title="Ban '.$player[4].'" alt="Ban '.$player[4].'"/></a>';
+	$icon2 = '<a href="admin.php?view=actions&resetlocation='.$rowinfo['id'].'"><img src="images/icons/wire.png" title="ResetLocation '.$player[4].'" alt="ResetLocation '.$row['id'].'"/></a>';
 	
 	$tablerow = "<tr>
 				<td align=\"center\" class=\"gear_preview\" style=\"vertical-align:middle;\">".$icon.$icon1.$icon2."</td>
@@ -265,7 +265,7 @@ function row_vehicle($row, $chbox){
 					$curitem = $Inventory[$i][0]; $icount = ' - '.$Inventory[$i][1].' rounds';
 				}
 			}
-			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
+			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"><img style="max-width:43px;max-height:43px;" src="images/thumbs/'.$curitem.'.png" title="'.$curitem.$icount.'" alt="'.$curitem.$icount.'"/></div>';
 		} else {
 			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
@@ -278,7 +278,7 @@ function row_vehicle($row, $chbox){
 	for ($i=0; $i< $limit; $i++){
 		if(array_key_exists($i,$Hitpoints)){
 			$curitem = $Hitpoints[$i];
-			$HitpointsPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;background-color: rgba(100,'.round((255/100)*(100 - ($curitem[1]*100))).',0,0.8);"><img style="max-width:43px;max-height:43px;" src="'.$path.'images/hits/'.$curitem[0].'.png" title="'.$curitem[0].' - '.round(100 - ($curitem[1]*100)).'%" alt="'.$curitem[0].' - '.round(100 - ($curitem[1]*100)).'%"/></div>';
+			$HitpointsPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;background-color: rgba(100,'.round((255/100)*(100 - ($curitem[1]*100))).',0,0.8);"><img style="max-width:43px;max-height:43px;" src="images/hits/'.$curitem[0].'.png" title="'.$curitem[0].' - '.round(100 - ($curitem[1]*100)).'%" alt="'.$curitem[0].' - '.round(100 - ($curitem[1]*100)).'%"/></div>';
 		}			
 	}	
 	
