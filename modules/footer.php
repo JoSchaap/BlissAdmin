@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id']))
 <div id="footer">
 	<!--  start footer-left -->
 	<div id="footer-left">
-	<?php echo $sitename ?> &copy; Copyright 2006-2012 <a href="http://lead-games.com">Lead Games</a>. All rights reserved.</div>
+	Bliss Administration panel &copy; Copyright 2006-2012 <a href="http://lead-games.com">Lead Games</a>Redesigned by UnclearWall. All rights reserved.</div>
 	<!--  end footer-left -->
 	<div class="clear">&nbsp;</div>
 </div>
