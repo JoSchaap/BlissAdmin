@@ -28,12 +28,14 @@ if (isset($_SESSION['user_id']))
 
 		var pixelOrigin_ = new google.maps.Point(128, 128);
 		var pixelsPerLonDegree_ = 256 / 360;
-        var pixelsPerLonRadian_ = 256 / (2 * Math.PI);
+	        var pixelsPerLonRadian_ = 256 / (2 * Math.PI);
 		
 		infowindow = new google.maps.InfoWindow({
                 content: "loading..."
             });
-			
+
+	var mapMarkers = [];
+		
         // ChernoMap class
         //////////////////////////////////
         Demo.ChernoMap = function (container) {
@@ -50,31 +52,7 @@ if (isset($_SESSION['user_id']))
 			// map.fromPointToLatLng(pt2, 2)
 			// 360/(x / xp) ||  180 - (y / yp)  left:1477.1 top:190.7
 			// Creating a marker and positioning it on the map  x = 45.5, y = 47.25 72.85  94.5 85.055, 180
-			
-			
-			for (i = 0; i < markers.length; i++) { 
-
-				var lng = ((markers[i][2]/64) - pixelOrigin_.x) / pixelsPerLonDegree_;
-				var latRadians = (((markers[i][3])/64) - pixelOrigin_.y) / pixelsPerLonRadian_;
-				var lat = radiansToDegrees(2 * Math.atan(Math.exp(latRadians)) - Math.PI / 2);
-				
-				marker = new google.maps.Marker({
-				position: new google.maps.LatLng(lat, lng),
-				map: map,
-				title: markers[i][0],
-				clickable: true,
-				icon: markers[i][5],
-				zIndex:  markers[i][4]
-				});
-				marker.setDraggable(true);
-				
-				google.maps.event.addListener(marker, 'click', (function(marker, i) {
-				return function() {
-					infowindow.setContent(markers[i][1]);
-					infowindow.open(map, marker);
-				}
-			  })(marker, i));
-			}
+		
 			
 			function borders(){
 				return {
@@ -108,8 +86,43 @@ if (isset($_SESSION['user_id']))
             this._map.mapTypes.set('cherno', new Demo.ImgMapType('cherno', '#000000'));
             this._map.setMapTypeId('cherno');
         };
-		
-		
+
+	google.maps.Map.prototype.clearMarkers = function() {
+	    for(var i = 0; i < mapMarkers.length; i++){
+		mapMarkers[i].setMap(null);
+	    }
+	    mapMarkers = new Array();
+	};
+	
+	function pollMarkers() {
+	$.getJSON('positions.php', function(markers) {
+		var map = ChernoMap._map;
+		map.clearMarkers();
+		for (i = 0; i < markers.length; i++) { 
+			var lng = ((markers[i][2]/64) - pixelOrigin_.x) / pixelsPerLonDegree_;
+			var latRadians = (((markers[i][3])/64) - pixelOrigin_.y) / pixelsPerLonRadian_;
+			var lat = radiansToDegrees(2 * Math.atan(Math.exp(latRadians)) - Math.PI / 2);
+						
+			marker = new google.maps.Marker({
+			position: new google.maps.LatLng(lat, lng),
+				map: map,
+				title: markers[i][0],
+				clickable: true,
+				icon: markers[i][5],
+				zIndex:  markers[i][4]
+			});
+			marker.setDraggable(true);
+			mapMarkers.push(marker);
+						
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				return function() {
+					infowindow.setContent(markers[i][1]);
+					infowindow.open(map, marker);
+				}
+			})(marker, i));
+		}
+	});
+	}
 
         // ImgMapType class
         //////////////////////////////////
@@ -286,8 +299,11 @@ if (isset($_SESSION['user_id']))
 
         // Map creation
         //////////////////////////////////
+	var ChernoMap;
         google.maps.event.addDomListener(window, 'load', function () {
-            var ChernoMap = new Demo.ChernoMap(document.getElementById('cherno-map'));
+            ChernoMap = new Demo.ChernoMap(document.getElementById('cherno-map'));
+	    setInterval(function() {pollMarkers();}, 10000);
+	    pollMarkers();
         });
     /* ]]> */
     </script>
