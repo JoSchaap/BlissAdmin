@@ -95,7 +95,7 @@ if (isset($_SESSION['user_id']))
 	};
 	
 	function pollMarkers() {
-	$.getJSON('positions.php', function(markers) {
+	$.getJSON('positions.php?type=vehicles', function(markers) {
 		var map = ChernoMap._map;
 		map.clearMarkers();
 		for (i = 0; i < markers.length; i++) { 
