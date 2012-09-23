@@ -258,7 +258,7 @@ while ($row=mysql_fetch_array($res)) {
 							$jl = 0;
 							for ($i=0; $i<count($Hitpoints); $i++){
 								if ($jk > 3){ $jk = 0;$jl++;}
-								$hit = '<img style="max-width:90px;max-height:90px;" src="'.$path.'images/hits/'.$Hitpoints[$i][0].'.png" title="'.$Hitpoints[$i][0].' - '.round(100 - ($Hitpoints[$i][1]*100)).'%" alt="'.$Hitpoints[$i][0].' - '.round(100 - ($Hitpoints[$i][1]*100)).'%"/>';
+								$hit = '<img style="max-width:90px;max-height:90px;" src="images/hits/'.$Hitpoints[$i][0].'.png" title="'.$Hitpoints[$i][0].' - '.round(100 - ($Hitpoints[$i][1]*100)).'%" alt="'.$Hitpoints[$i][0].' - '.round(100 - ($Hitpoints[$i][1]*100)).'%"/>';
 								//$hit = $Hitpoints[$i][0].' - '.$Hitpoints[$i][1];
 								echo '<div class="hit_slot" style="margin-left:'.($jx+(93*$jk)).'px;margin-top:'.($jy+(93*$jl)).'px;width:91px;height:91px;background-color: rgba(100,'.round((255/100)*(100 - ($Hitpoints[$i][1]*100))).',0,0.8);">'.$hit.'</div>';
 								$jk++;

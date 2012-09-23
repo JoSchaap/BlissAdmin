@@ -65,6 +65,6 @@ if (isset($_SESSION['user_id']))
 }
 else
 {
-	include ($path.'modules/login.php');
+	include ('modules/login.php');
 }
 ?>
