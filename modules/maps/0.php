@@ -82,7 +82,7 @@
 				$id = $row['id'];
 				$uid = $row['unique_id'];
 				
-				$queryinfo = "SELECT * FROM survivor WHERE unique_id = '" . $row['unique_id'] . "' and is_dead=0";
+				$queryinfo = "SELECT * FROM survivor WHERE unique_id like '" . $row['unique_id'] . "' and is_dead=0";
 				$resinfo = mysql_query($queryinfo) or die(mysql_error());								
 				$rowinfo = mysql_fetch_array($resinfo);
 				
