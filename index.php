@@ -34,8 +34,9 @@ mysql_select_db($dbName) or die (mysql_error());
 							$KillsH[] = $row['survivor_kills']; // sum 
 							$totalKillsH = $row['survivor_kills'];
 							//Alive
-							$Alive[] = $row['is_dead']; // sum 
-							$totalAlive = $row['is_dead'];
+							//$Alive[] = $row['is_dead']; // sum 
+							$Alive = mysql_query("SELECT * FROM survivor WHERE is_dead=0");
+							$totalAlive = mysql_num_rows($Alive);
 							//HeadshotsZ
 							$HeadshotsZ[] = $row['headshots']; // sum 
 							$totalHeadshotsZ = $row['headshots'];
@@ -110,7 +111,7 @@ $(document).pngFix( );
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-alive.gif" width="36" height="27" /></td>
     <td><strong>Alive Characters:</strong></td>
-    <td align="right"><?php echo $Alive;?></td>
+    <td align="right"><?php echo $totalAlive;?></td>
   </tr>
   <tr>
       <td><img src="./images/playerdeaths.png" width="24" height="24" /></td>
