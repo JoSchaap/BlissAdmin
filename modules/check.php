@@ -115,7 +115,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 			//}
 		//}
 		$id = $row['unique_id'];
-		$playernamequery = mysql_query("SELECT * FROM profile WHERE unique_id = '".$id."' ORDER BY name");
+		$playernamequery = mysql_query("SELECT * FROM profile WHERE unique_id like '".$id."' ORDER BY name");
 		$playername = mysql_fetch_array($playernamequery);
 		$name = $playername['name'];	
 		$icon1 = '<a href="admin.php?view=actions&deletecheck='.$row['id'].'"><img src="'.$path.'images/icons/player_dead.png" title="Delete '.$name.'" alt="Delete '.$name.'"/></a>';		
