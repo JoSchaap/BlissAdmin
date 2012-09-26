@@ -9,6 +9,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 
 <div id="page-heading">
 <?php
+	//ini_set('max_execution_time', 300);
 	echo "<title>".$pagetitle." - ".$sitename."</title>";
 	echo "<h1>".$pagetitle."</h1>";
 	
