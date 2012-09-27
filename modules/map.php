@@ -1,7 +1,37 @@
 <?php
 if (isset($_SESSION['user_id']))
 {
+	switch($_GET['show']) {
+	case 0:
+		$title = 'Recent Players';
+		break;
+	case 1:
+		$title = 'Alive Players';
+		break;
+	case 2:
+		$title = 'Dead Players';
+		break;
+	case 3:
+		$title = 'All Players';
+		break;
+	case 4:
+		$title = 'Vehicles';
+		break;
+	case 5:
+		$title = 'Vehicle Spawns';
+		break;
+	case 6:
+		$title = 'Tents';
+		break;
+	case 7:
+		$title = 'Deployables';
+		break;
+	case 8:
+		$title = 'Recent Players and Vehicles';
+		break;
+	}
 ?>
+	<h1><?php echo $title; ?></h1>
 	<div id="cherno-map" style="width:99%;height:750px;margin:10px auto;border:2px solid #000;"></div>
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
