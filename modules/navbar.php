@@ -99,7 +99,7 @@ if (isset($_SESSION['user_id']))
 							<ul class="level3 parent-user-manager">
 							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Players</a>
 							<ul class="level3 parent-groups">
-								<li class="li-add-new-user"><a href="admin.php?view=map&show=0" class="class:newarticle item">Online</a></li>
+								<li class="li-add-new-user"><a href="admin.php?view=map&show=0" class="class:newarticle item">Recent Players</a></li>
 							</ul>
 							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Deployables</a>
 							<ul class="level3 parent-groups">
