@@ -1,7 +1,7 @@
 BlissAdmin for the Bliss hive
 =========
 
-DayZ Administration panel. Windows-only version
+DayZ Administration panel.
 
 Requirements
 =========
