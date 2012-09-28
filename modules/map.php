@@ -33,7 +33,6 @@ if (isset($_SESSION['user_id']))
 ?>
 	<h1><?php echo $title; ?></h1>
 	<div id="cherno-map" style="width:99%;height:750px;margin:10px auto;border:2px solid #000;"></div>
-	<div id="cherno-map" style="width:99%;height:750px;margin:10px auto;border:2px solid #000;"></div>
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
     <script type="text/javascript">
