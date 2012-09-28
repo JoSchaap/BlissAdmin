@@ -32,8 +32,10 @@ if (isset($_SESSION['user_id']))
 	}
 ?>
 	<h1><?php echo $title; ?></h1>
+	<a href="javascript:toggleFullScreen();">Full Screen</a>
 	<div id="cherno-map" style="width:99%;height:750px;margin:10px auto;border:2px solid #000;"></div>
 
+    <script type="text/javascript" src="js/jquery.fullscreen.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
     <script type="text/javascript">
     /* <![CDATA[ */
@@ -60,6 +62,10 @@ if (isset($_SESSION['user_id']))
 		infowindow = new google.maps.InfoWindow({
                 content: "loading..."
             });
+
+	function toggleFullScreen() {
+		$('#cherno-map').fullScreen();
+	}
 
 	var mapMarkers = [];
 		
@@ -329,7 +335,7 @@ if (isset($_SESSION['user_id']))
 	var ChernoMap;
         google.maps.event.addDomListener(window, 'load', function () {
             ChernoMap = new Demo.ChernoMap(document.getElementById('cherno-map'));
-	    setInterval(function() {pollMarkers();}, 5000);
+	    setInterval(function() {pollMarkers();}, 10000);
 	    pollMarkers();
         });
     /* ]]> */
