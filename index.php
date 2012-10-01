@@ -33,15 +33,15 @@ mysql_select_db($dbName) or die (mysql_error());
 							//KillsH
 							$KillsH[] = $row['survivor_kills']; // sum 
 							$totalKillsH = $row['survivor_kills'];
-							//Alive
-							//$Alive[] = $row['is_dead']; // sum 
-							$Alive = mysql_query("SELECT * FROM survivor WHERE is_dead=0");
-							$totalAlive = mysql_num_rows($Alive);
 							//HeadshotsZ
 							$HeadshotsZ[] = $row['headshots']; // sum 
 							$totalHeadshotsZ = $row['headshots'];
 							//print "<li>$totalKillsz</li>"; //debug
 						}
+						//Alive
+						//$Alive[] = $row['is_dead']; // sum 
+						$Alive = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=0");
+						$totalAlive = mysql_fetch_array($Alive);
 						//KillsZ
 						$KillsZ = array_sum($KillsZ);
 						//KillsB
@@ -53,13 +53,15 @@ mysql_select_db($dbName) or die (mysql_error());
 						//HeadshotsZ
 						$HeadshotsZ = array_sum($HeadshotsZ);
 						
-						$totalplayers = mysql_num_rows($res);
+						$totalplayers= mysql_query("SELECT count(*) FROM profile");
+						$num_totalplayers = mysql_fetch_array($totalplayers);
 						
-						$playerdeaths = mysql_query("SELECT * FROM survivor WHERE is_dead=1");
-						$num_deaths = mysql_num_rows($playerdeaths);
+						$playerdeaths = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=1");
+						//$num_deaths = mysql_num_rows($playerdeaths);
+						$num_deaths = mysql_fetch_array($playerdeaths);
 						
-						$alivebandits = mysql_query("SELECT * FROM survivor WHERE is_dead=1 And Model='BanditW1_DZ'");
-						$num_alivebandits = mysql_num_rows($alivebandits);
+						$alivebandits = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=0 And Model like 'Bandit1_DZ'");
+						$num_alivebandits = mysql_fetch_array($alivebandits);
 						
 						$totalVehicles = mysql_query("SELECT count(*) FROM objects WHERE oid=0 AND instance = " . $iid);
 						$num_totalVehicles = mysql_fetch_array($totalVehicles);
@@ -104,7 +106,7 @@ $(document).pngFix( );
 				<table border="0" cellpadding="4" cellspacing="0">
 <td width="26"><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-unique.gif" width="36" height="27" /></td>
     <td width="184"><strong>Total Players:</strong></td>
-    <td width="129" align="right"><?php echo $totalplayers;?></td>
+    <td width="129" align="right"><?php echo $num_totalplayers[0];?></td>
   </tr>
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-24hr.gif" width="36" height="27" /></td>
@@ -114,12 +116,12 @@ $(document).pngFix( );
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-alive.gif" width="36" height="27" /></td>
     <td><strong>Alive Characters:</strong></td>
-    <td align="right"><?php echo $totalAlive;?></td>
+    <td align="right"><?php echo $totalAlive[0];?></td>
   </tr>
   <tr>
       <td><img src="./images/playerdeaths.png" width="24" height="24" /></td>
     <td><strong>Player Deaths:</strong></td>
-    <td align="right"><?php echo $num_deaths;?></td>
+    <td align="right"><?php echo $num_deaths[0];?></td>
   </tr>
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-zombies.gif" width="36" height="27" /></td>
@@ -139,7 +141,7 @@ $(document).pngFix( );
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-bandits.gif" width="36" height="27" /></td>
     <td><strong>Bandits Alive:</strong></td>
-    <td align="right"><?php echo $num_alivebandits;?></td>
+    <td align="right"><?php echo $num_alivebandits[0];?></td>
   </tr>
   <tr>
     <td><img src="http://www.dayzmod.com/images/icons/sidebar/staticon-banditskilled.gif" width="36" height="27" /></td>

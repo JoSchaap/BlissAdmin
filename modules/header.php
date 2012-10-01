@@ -11,6 +11,7 @@ if (isset($_SESSION['user_id']))
 <link rel="stylesheet" href="css/flexcrollstyles.css" />	
 <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>	
 <script src="js/flexcroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.fullscreen.js"></script>
 <!--<script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery/ui.core.js" type="text/javascript"></script>
 <script src="js/jquery/ui.checkbox.js" type="text/javascript"></script>

@@ -97,14 +97,14 @@ if (isset($_SESSION['user_id']))
 					<ul class="level2 parent-users">
 						<li class="li-user-manager parent"><a href="#nogo" class="class:user daddy item">Instance ID:<?php echo $iid?></a>
 							<ul class="level3 parent-user-manager">
-							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Players</a>
+							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Recent Players</a>
 							<ul class="level3 parent-groups">
-								<li class="li-add-new-user"><a href="admin.php?view=map&show=0" class="class:newarticle item">Recent Players</a></li>
+								<li class="li-add-new-user"><a href="admin.php?view=map&show=0" class="class:newarticle item">Within 1 Min</a></li>
 							</ul>
 							<li class="li-groups parent"><a href="#nogo" class="class:groups daddy item">Deployables</a>
 							<ul class="level3 parent-groups">
 								<li class="li-add-new-group"><a href="admin.php?view=map&show=4" class="class:newarticle item">Vehicles Ingame</a></li>
-										<li class="li-add-new-group"><a href="admin.php?view=map&show=6" class="class:newarticle item">All Ingame Tents</a></li>
+								<li class="li-add-new-group"><a href="admin.php?view=map&show=6" class="class:newarticle item">All Ingame Tents</a></li>
 								<li class="li-add-new-group"><a href="admin.php?view=map&show=7" class="class:newarticle item">Other Deployables</a></li>
 							</ul>
 							<li class="li-add-new-user"><a href="admin.php?view=map&show=8" class="class:newarticle item">Everything</a></li>
