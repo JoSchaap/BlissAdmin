@@ -60,7 +60,7 @@ mysql_select_db($dbName) or die (mysql_error());
 						//$num_deaths = mysql_num_rows($playerdeaths);
 						$num_deaths = mysql_fetch_array($playerdeaths);
 						
-						$alivebandits = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=0 And Model='BanditW1_DZ'");
+						$alivebandits = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=0 And Model like 'Bandit1_DZ'");
 						$num_alivebandits = mysql_fetch_array($alivebandits);
 						
 						$totalVehicles = mysql_query("SELECT count(*) FROM objects WHERE oid=0 AND instance = " . $iid);
