@@ -27,15 +27,15 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "Online players";
 			break;
 		case 1:
-			$query = "SELECT * FROM survivor WHERE is_dead = '0'"; 
+			$query = "select profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id and survivor.is_dead = '0'"; 
 			$pagetitle = "Alive players";		
 			break;
 		case 2:
-			$query = "SELECT * FROM survivor WHERE is_dead = '1'"; 
+			$query = "select profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id and survivor.is_dead = '1'"; 
 			$pagetitle = "Dead players";	
 			break;
 		case 3:
-			$query = "SELECT * FROM survivor"; 
+			$query = "select profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id"; 
 			$pagetitle = "All players";	
 			break;
 		case 4:
@@ -43,20 +43,12 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "Ingame vehicles";	
 			break;
 		case 5:
-			$query = "SELECT * FROM spawns";
+			$query = "SELECT * FROM spawns WHERE world = 'chernarus'";
 			$pagetitle = "Vehicle spawn locations";	
 			break;
 		case 6:
-			$query = "SELECT * FROM spawns";
+			$query = "SELECT * FROM spawns WHERE world = 'chernarus'";
 			$pagetitle = "TEST Online Players";	
-			break;
-		case 14:
-			$query = "SELECT * FROM objects where instance=1";
-			$pagetitle = "Ingame vehicles";	
-			break;
-		case 24:
-			$query = "SELECT * FROM objects where instance=2";
-			$pagetitle = "Ingame vehicles";	
 			break;
 		default:
 			$pagetitle = "Online players";

@@ -102,8 +102,8 @@ function row_player($row){
 	
 	$tablerow = "<tr>
 		<td align=\"center\" class=\"gear_preview\">".$icon."</td>
+		<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."&cid=".$row['id']."\">".$row['name']."</a></td>
 		<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."&cid=".$row['id']."\">".$row['unique_id']."</a></td>
-		<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."&cid=".$row['id']."\">".$row['uid']."</a></td>
 		<td align=\"center\" class=\"gear_preview\"><a href=\"admin.php?view=info&show=1&id=".$row['unique_id']."&cid=".$row['id']."\">".sprintf("%03d",round($y/100)).sprintf("%03d",round((154-($x/100))))."</a></td>
 		<td align=\"center\" class=\"gear_preview\">".$InventoryPreview."</td>
 		<td align=\"center\" class=\"gear_preview\">".$BackpackPreview. "</td>
@@ -112,18 +112,19 @@ function row_player($row){
 }
 
 function row_online_player($row, $player){
-	$queryinfo = "SELECT * FROM survivor WHERE is_dead=0 AND unique_id like '" . $row['unique_id'] . "'";
-	$resinfo = mysql_query($queryinfo) or die(mysql_error());								
-	$rowinfo = mysql_fetch_array($resinfo);
+	//$queryinfo = "SELECT * FROM survivor WHERE is_dead=0 AND unique_id like '" . $row['unique_id'] . "'";
+
+	//$resinfo = mysql_query($queryinfo) or die(mysql_error());								
+	//$rowinfo = mysql_fetch_array($resinfo);
 	$x = 0;
 	$y = 0;
-	$Worldspace = str_replace("[", "", $rowinfo['pos']);
+	$Worldspace = str_replace("[", "", $row['pos']);
 	$Worldspace = str_replace("]", "", $Worldspace);
 	$Worldspace = explode(",", $Worldspace);					
 	if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
 	if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
-	$dead = ($rowinfo['is_dead'] ? '_dead' : '');
-	$Inventory = $rowinfo['inventory'];
+	$dead = ($row['is_dead'] ? '_dead' : '');
+	$Inventory = $row['inventory'];
 	$Inventory = str_replace("|", ",", $Inventory);
 	$Inventory  = json_decode($Inventory);
 	if(array_key_exists(0,$Inventory)){
@@ -149,7 +150,7 @@ function row_online_player($row, $player){
 			$InventoryPreview .= '<div class="preview_gear_slot" style="margin-top:0px;width:47px;height:47px;"></div>';
 		}			
 	}
-	$Backpack  = $rowinfo['backpack'];
+	$Backpack  = $row['backpack'];
 	$Backpack = str_replace("|", ",", $Backpack);
 	$Backpack  = json_decode($Backpack);
 	if(array_key_exists(0,$Backpack)){ 
@@ -198,7 +199,7 @@ function row_online_player($row, $player){
 
 	$icon = '<a href="admin.php?view=actions&kick='.$player[0].'"><img src="images/icons/player.png" title="Kick '.$player[4].'" alt="Kick '.$player[4].'"/></a>';
 	$icon1 = '<a href="admin.php?view=actions&ban='.$player[0].'"><img src="images/icons/player_dead.png" title="Ban '.$player[4].'" alt="Ban '.$player[4].'"/></a>';
-	$icon2 = '<a href="admin.php?view=actions&resetlocation='.$rowinfo['id'].'"><img src="images/icons/wire.png" title="ResetLocation '.$player[4].'" alt="ResetLocation '.$row['id'].'"/></a>';
+	$icon2 = '<a href="admin.php?view=actions&resetlocation='.$row['id'].'"><img src="images/icons/wire.png" title="ResetLocation '.$player[4].'" alt="ResetLocation '.$row['id'].'"/></a>';
 	
 	$tablerow = "<tr>
 				<td align=\"center\" class=\"gear_preview\" style=\"vertical-align:middle;\">".$icon.$icon1.$icon2."</td>
