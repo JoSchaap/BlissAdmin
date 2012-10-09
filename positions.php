@@ -202,7 +202,7 @@ $sql = "select s.unique_id as unique_id, s.id, p.name, 'Player' as type, s.pos a
 			echo json_encode($output);
 		break;
 	case 7:
-		$sql = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.otype in ('TentStorage', 'Sandbag1_DZ', 'TrapBear', 'Hedgehog_DZ', 'Wire_cat1') and o.instance = " . $iid;
+		$sql = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.otype in ('Sandbag1_DZ', 'TrapBear', 'Hedgehog_DZ', 'Wire_cat1') and o.instance = " . $iid;
 					$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
@@ -219,7 +219,7 @@ $sql = "select s.unique_id as unique_id, s.id, p.name, 'Player' as type, s.pos a
 
 		$output[] = array(
 			$row['otype'] . ', ' . $row['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a></h2>',
+			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a><br><a href="admin.php?view=actions&delete='.$row['id'].'">Remove: '.$row['id'].'</a></h2>',
 			trim($y),
 			trim($x) + 1024,
 			$i,
