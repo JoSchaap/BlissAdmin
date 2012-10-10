@@ -17,10 +17,11 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 	
 	//$items_ini = parse_ini_file("/items.ini", true);
 	$xml = file_get_contents('/items.xml', true);
-	require_once($path.'modules/xml2array.php');
+	require_once('modules/xml2array.php');
 	$items_xml = XML2Array::createArray($xml);
 	
-	$query = "SELECT * FROM survivor";
+	//$query = "SELECT * FROM survivor";
+	$query = "select * from (SELECT profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id) as T";
 	$res = mysql_query($query) or die(mysql_error());
 	$number = mysql_num_rows($res);
 	$rows = null;
@@ -41,15 +42,6 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 		$Backpack  = $row['backpack'];
 		$Backpack = str_replace(",", ",", $Backpack);
 		$Backpack  = json_decode($Backpack);
-		
-			$queryvehicles = "SELECT * FROM objects";
-			$resvehicles = mysql_query($queryvehicles) or die(mysql_error());
-			$numbervehicles = mysql_num_rows($resvehicles);
-			$rowsvehicles = null;
-		
-		$vehicleInventory = $rowvehiclea['inventory'];	
-		$vehicleInventory = str_replace(",", ",", $vehicleInventory);
-		$vehicleInventory  = json_decode($vehicleInventory);
 
 		$Unknown = null;
 		$Unknown = array();
@@ -61,17 +53,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 			if (is_array($Inventory[1])){
 				$Inventory = $Inventory[1];
 			}			
-		}	
-
-		if (is_array($vehicleInventory[0])){
-			if (is_array($vehicleInventory[1])){
-				$vehicleInventory = (array_merge($vehicleInventory[0], $vehicleInventory[1]));
-			}
-		} else {
-			if (is_array($vehicleInventory[1])){
-				$vehicleInventory = $vehicleInventory[1];
-			}			
-		}			
+		}				
 		
 		$bpweaponscount = count($Backpack[1][0]);
 		$bpweapons = array();
@@ -105,20 +87,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 			}
 		}
 		
-		//foreach($Inventory as $item => $val)
-		//{						
-			//if (strlen($val) > 5){
-				//echo  $val."; ";
-				//if (!in_array(strtolower($val), $items)) {
-					//echo "has ".$val;
-				//	$Unknown[] = $val;
-				//}
-			//}
-		//}
-		$id = $row['unique_id'];
-		$playernamequery = mysql_query("SELECT * FROM profile WHERE unique_id like '".$id."' ORDER BY name");
-		$playername = mysql_fetch_array($playernamequery);
-		$name = $playername['name'];	
+		$name = $row['name'];	
 		$icon1 = '<a href="admin.php?view=actions&deletecheck='.$row['id'].'"><img src="'.$path.'images/icons/player_dead.png" title="Delete '.$name.'" alt="Delete '.$name.'"/></a>';		
 		if ($row['is_dead'] == 1) {
 				$status = '<img src="'.$path.'images/icons/player_dead.png" title="'.$name.' is Dead" alt="'.$name.' is Dead"/>';
