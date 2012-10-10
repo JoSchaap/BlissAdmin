@@ -382,6 +382,10 @@
         <Type>heavyammo</Type>
         <Slots>1</Slots>
     </sItemPainkiller>
+	<sItemRadio>
+        <Type>item</Type>
+        <Slots>1</Slots>
+    </sItemRadio>
     <sItemSandbag>
         <Type>heavyammo</Type>
         <Slots>1</Slots>
