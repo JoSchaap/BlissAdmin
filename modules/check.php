@@ -21,7 +21,7 @@ $query = "INSERT INTO `logs`(`action`, `user`, `timestamp`) VALUES ('ITEMS CHECK
 	$items_xml = XML2Array::createArray($xml);
 	
 	//$query = "SELECT * FROM survivor";
-	$query = "select * from (SELECT profile.name, survivor.* from profile, survivor as survivor where profile.unique_id = survivor.unique_id) as T";
+	$query = "select p.name, s.* from profile p left join survivor s on p.unique_id = s.unique_id where s.is_dead = 0";
 	$res = mysql_query($query) or die(mysql_error());
 	$number = mysql_num_rows($res);
 	$rows = null;
