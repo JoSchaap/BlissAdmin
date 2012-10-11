@@ -96,12 +96,7 @@ $id = $row['id'];
 	    <td><strong>total_survivor_kills:</strong></td>
     <td align="right"><?php echo $row['total_survivor_kills'];?></td>
   </tr>
-  <tr>
-    <td><img src="./images/vehicles.png" width="24" height="24" /></td>
-    <td><strong>is_whitelisted:</strong></td>
-    <td align="right"><?php echo $row['is_whitelisted'];?></td>
-  </tr>
-
+ 
 				</table>
 			</div>
 			<div class="clear"></div>
@@ -121,7 +116,7 @@ $id = $row['id'];
 <div id="footer">
 	<!--  start footer-left -->
 	<div id="footer-left">
-	<a href="admin.php">M4H Stats &copy; Copyright 2006-2012 M4H</a>. All rights reserved.</div>
+<a href="admin.php"><?php echo $sitename ?> &copy; Copyright 2006-2012</a>. All rights reserved. Redesigned By UnclearWall</div>
 	<!--  end footer-left -->
 	<div class="clear">&nbsp;</div>
 </div>
