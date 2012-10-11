@@ -80,25 +80,27 @@ mysql_select_db($dbName) or die (mysql_error());
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $sitename ?></title>
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" title="default" />
+<link rel="stylesheet" href="css/stylesheet.css" type="text/css" charset="utf-8" />
 <script src="js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 $(document).pngFix( );
 });
 </script>
+
 </head>
 <body id="stats-bg"> 
 
  
 <div id="stats-holder">
 
-	<div id="logo-login">
+	<div id="stats-margin">
 		<a href="index.php"><img src="images/logo.png" width="451px" height="218px" alt="" /></a>
 	</div>
+	<div class="clear"></div>		
 	
-	<div class="clear"></div>
-		<a href="http://www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/" target="_blank"><img src="http://cache.www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/b_560_95_1.png" border="0" width="560" height="95" alt=""/></a>
-
+	<a href="http://www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/" target="_blank"><img src="http://cache.www.gametracker.com/server_info/<?php echo $serverip?>:<?php echo $serverport?>/b_560_95_1.png" border="0" width="560" height="95" alt=""/></a>
+	
 		<div id="statsbox">	
 			<div id="login-inner">
 				<table border="0" cellpadding="4" cellspacing="0">
@@ -161,7 +163,7 @@ $(document).pngFix( );
 			
 			<div class="clear"></div>
 		</div>
-	</form>
+	</form> 
 </div>
 </body>
 </html>
@@ -172,11 +174,27 @@ $(document).pngFix( );
 <!--  end content-outer........................................................END -->
 
 <div class="clear">&nbsp;</div>
+<div id="social">
+	<!--  start social-center -->
+	<h1 class="Topleveltext">Infecting Your Social Media</h1>
+<p>
+ <a href="http://<?php echo $call ?>" target="_new"><img src="images/social/icons/call-splatter.png" alt="Phone Call" width="150" height="150" /></a>
+  <a href="mailto:<?php echo $email ?>"><img src="images/social/icons/email-splatter.png" alt="Email Us" width="150" height="150" /></a>
+  <a href="http://<?php echo $facebook ?>" target="_new"><img src="images/social/icons/facebook-splatter.png" alt="Facebook Page" width="150" height="150" /></a>
+  <a href="http://<?php echo $flickr ?>" target="_new"><img src="images/social/icons/flickr-splatter.png" alt="Flickr Page" width="150" height="150" /></a>
+  <a href="http://<?php echo $youtube ?>" target="_new"><img src="images/social/icons/youtube-splatter.png" alt="YouTube Page" width="150" height="150" /></a>
+  <a href="http://<?php echo $twitter ?>" target="_new"><img src="images/social/icons/twitter-splatter.png" alt="Twitter Page" width="150" height="150" /></a>
+  <a href="http://<?php echo $vimeo ?>" target="_new"><img src="images/social/icons/vimeo-splatter.png" alt="Vimeo Page" width="150" height="150" /></a>
+  </p>
+</body>
+	<!--  end social-center -->
+	<div class="clear">&nbsp;</div>
+</div>
 <!-- start footer -->         
 <div id="footer">
 	<!--  start footer-left -->
 	<div id="footer-left">
-	<a href="admin.php"><?php echo $sitename ?> &copy; Copyright 2006-2012</a>. All rights reserved.</div>
+	<a href="admin.php"><?php echo $sitename ?> &copy; Copyright 2006-2012</a>. All rights reserved. Redesigned By UnclearWall</div>
 	<!--  end footer-left -->
 	<div class="clear">&nbsp;</div>
 </div>

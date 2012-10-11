@@ -10,4 +10,12 @@
 	$password = "dayz"; //database password
 	$dbName = "dayz"; //database name
 	$sitename = "DayZ Administration"; //Admin panel name
+	$adminemial = "someemail@somthing.com"; //Contact email
+	$email = ""; //Contact email
+	$call = ""; //???
+	$facebook = "www.facebook.com"; //Facebook Page
+	$flickr = ""; //Flickr Page
+	$twitter = ""; //Twitter Page
+	$vimeo = ""; //Vimeo Page
+	$youtube = ""; //YouTube
 ?>
