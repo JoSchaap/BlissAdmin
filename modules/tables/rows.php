@@ -35,6 +35,7 @@ function row_player($row){
 	$Inventory = $row['inventory'];
 	$Inventory = str_replace(",", ",", $Inventory);
 	$Inventory  = json_decode($Inventory);
+	if(!is_array($Inventory)) {$Inventory = array();}
 	if(array_key_exists(0,$Inventory)){
 		if(array_key_exists(1,$Inventory)){
 			$Inventory = (array_merge($Inventory[0], $Inventory[1]));
@@ -153,6 +154,7 @@ function row_online_player($row, $player){
 	$Backpack  = $row['backpack'];
 	$Backpack = str_replace("|", ",", $Backpack);
 	$Backpack  = json_decode($Backpack);
+	if(!is_array($Backpack)) {$Backpack = array();}
 	if(array_key_exists(0,$Backpack)){ 
 		$bpweapons = array();
 		$bpweapons[] = $Backpack[0];
