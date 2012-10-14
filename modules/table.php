@@ -1,4 +1,5 @@
 <?php
+include ('config.php');
 if (isset($_SESSION['user_id']))
 {	
 	$pnumber = 0;
@@ -39,15 +40,15 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "All players";	
 			break;
 		case 4:
-			$query = "SELECT * FROM objects";
-			$pagetitle = "Ingame vehicles";	
+			$query = "SELECT * FROM objects WHERE instance = '" . $iid . "'";
+			$pagetitle = "All Ingame Objects";	
 			break;
 		case 5:
-			$query = "SELECT * FROM spawns WHERE world = 'chernarus'";
+			$query = "SELECT * FROM spawns WHERE world = '" . $map . "'";
 			$pagetitle = "Vehicle spawn locations";	
 			break;
 		case 6:
-			$query = "SELECT * FROM spawns WHERE world = 'chernarus'";
+			$query = "SELECT * FROM spawns WHERE world = '" . $map . "'";
 			$pagetitle = "TEST Online Players";	
 			break;
 		default:
