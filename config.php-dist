@@ -8,6 +8,7 @@
 	$password = "dayz"; //database password
 	$dbName = "dayz"; //database name
 	$sitename = "DayZ Administration"; //Admin panel name
+	$map = "chernarus"; // chernarus or lingor
 
 	
 	//Social Media

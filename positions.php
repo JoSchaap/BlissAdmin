@@ -148,7 +148,7 @@ $sql = "select s.unique_id as unique_id, s.id, p.name, 'Player' as type, s.pos a
 		echo json_encode($output);
 		break;
 	case 5:
-		$sql = "select id, otype, type, pos, world, '" . $iid . "' as instance from spawns s join object_classes oc on s.otype = oc.classname where world = 'chernarus'";
+		$sql = "select id, otype, type, pos, world, '" . $iid . "' as instance from spawns s join object_classes oc on s.otype = oc.classname where world = '" . $map . "'";
 			$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
