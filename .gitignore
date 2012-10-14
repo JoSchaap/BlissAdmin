@@ -10,3 +10,6 @@ Desktop.ini
 
 #Config File
 config.php
+
+#remove Maps
+titles/
