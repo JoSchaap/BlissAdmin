@@ -36,7 +36,7 @@ Reset Players locations.
 
 Map removeal of deploables.
 
-Live Map view (Working on)
+Live Map view (Cherno, Lingor Added)
 
 
 Installation
