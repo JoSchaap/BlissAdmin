@@ -183,6 +183,7 @@ function row_online_player($row, $player){
 	}
 	$BackpackPreview = "";
 	for ($p=0; $p< $limit; $p++){
+		if(!is_array($Backpack)) {$Backpack = array();}
 		if(array_key_exists($p,$Backpack)){
 			$curitem = $Backpack[$p];
 			if (is_array($curitem)){
