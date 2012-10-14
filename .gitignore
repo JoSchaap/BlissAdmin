@@ -12,6 +12,6 @@ Desktop.ini
 config.php
 
 #remove Maps
-titles/cherno-original/
-titles/lingor-original/
-titles/*.bat
+tiles/cherno-original/
+tiles/lingor-original/
+tiles/*.bat
