@@ -132,8 +132,8 @@ if (isset($_SESSION['user_id']))
 		var map = LingorMap._map;
 		map.clearMarkers();
 		for (i = 0; i < markers.length; i++) { 
-			var lng = ((markers[i][2]/64) - pixelOrigin_.x) / pixelsPerLonDegree_;
-			var latRadians = (((markers[i][3])/64) - pixelOrigin_.y) / pixelsPerLonRadian_;
+			var lng = ((markers[i][2]/39) - pixelOrigin_.x) / pixelsPerLonDegree_;
+			var latRadians = (((markers[i][3])/44.7) - pixelOrigin_.y) / pixelsPerLonRadian_;
 			var lat = radiansToDegrees(2 * Math.atan(Math.exp(latRadians)) - Math.PI / 2);
 						
 			marker = new google.maps.Marker({
@@ -182,7 +182,7 @@ if (isset($_SESSION['user_id']))
             var img = ownerDocument.createElement('IMG');
             img.width = this.tileSize.width;
             img.height = this.tileSize.height;
-            img.src = Demo.Utils.GetImageUrl(zoom + '_' + coord.x + '_' + coord.y + '.png');
+            img.src = Demo.Utils.GetImageUrl(zoom + '_' + coord.x + '_' + coord.y + '-fs8.png');
 
             return img;
         };
