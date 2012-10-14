@@ -182,7 +182,7 @@ if (isset($_SESSION['user_id']))
             var img = ownerDocument.createElement('IMG');
             img.width = this.tileSize.width;
             img.height = this.tileSize.height;
-            img.src = Demo.Utils.GetImageUrl(this._theme + '/tile_' + zoom + '_' + coord.x + '_' + coord.y + '.png');
+            img.src = Demo.Utils.GetImageUrl(this._theme + '/tile_' + zoom + '_' + coord.x + '_' + coord.y + '-fs8.png');
 
             return img;
         };
