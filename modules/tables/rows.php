@@ -275,7 +275,7 @@ function row_vehicle($row, $chbox){
 		}			
 	}
 	
-	$Hitpoints  = $row['health'];
+	$Hitpoints  = $row['parts'];
 	$Hitpoints = str_replace(",", ",", $Hitpoints);
 	$Hitpoints  = json_decode($Hitpoints);
 	$HitpointsPreview = "";
@@ -288,8 +288,8 @@ function row_vehicle($row, $chbox){
 	
 	$tablerow = "<tr>".$chbox."
 		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['id']."</a></td>
-		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['otype']."</a></td>			
-		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['uid']."</a></td>
+		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['class_name']."</a></td>			
+		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['id']."</a></td>
 		<td align=\"center\" class=\"gear_preview\" style=\"background-color: rgba(100,".round((255/100)*(100 - ($row['damage']*100))).",0,0.8);\">".substr($row['damage'], 0, 6)."</td>
 		<td align=\"center\" class=\"gear_preview\" ><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".sprintf("%03d",round($y/100)).sprintf("%03d",round((154-($x/100))))."</a></td>
 		<td align=\"center\" class=\"gear_preview\">".$InventoryPreview."</td>

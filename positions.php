@@ -164,7 +164,7 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		echo json_encode($output);
 		break;		
 	case 4:
-		$sql = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.instance = " . $iid ." and o.oid = 0";
+		$sql = "select iv.id, v.class_name, 0 owner_id, iv.worldspace, iv.inventory, iv.instance_id, iv.parts, fuel, oc.type, damage from instance_vehicle iv inner join vehicle v on iv.vehicle_id = v.id inner join object_classes oc on v.class_name = oc.classname where iv.instance_id = '" . $iid . "'";
 		$pagetitle = "Current Ingame vehicles";
 	$result = mysql_query($sql);
 	$output = array();
@@ -179,10 +179,11 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		$y = 0;
 		if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
 		if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
+		$description = "<h2><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['class_name']."</a></h2><table><tr><td><img style=\"max-width: 100px;\" src=\"images/vehicles/".$row['class_name'].".png\"></td><td>&nbsp;</td><td style=\"vertical-align:top; \"><h2>Position:</h2>left:".round(($y/100))." top:".round(((15360-$x)/100))."</td></td>Instance ID:".$row['instance_id']."</td></tr></table>";
 
 		$output[] = array(
-			$row['otype'] . ', ' . $row['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a></h2>',
+			$row['class_name'] . ', ' . $row['id'],
+			$description,
 			trim($y),
 			trim($x) + 1024,
 			$i,
@@ -192,7 +193,7 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		echo json_encode($output);
 		break;
 	case 5:
-		$sql = "select vehicle_id, otype, type, worldspace, world, '" . $iid . "' as instance from spawns s join object_classes oc on s.otype = oc.classname where world = '" . $map . "'";
+		$sql = "select wv.*, v.*, oc.* from world_vehicle wv inner join vehicle v on wv.vehicle_id = v.id inner join object_classes oc on v.class_name = oc.classname where wv.world_id = '" . $world . "'";
 			$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
@@ -206,20 +207,21 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		$y = 0;
 		if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
 		if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
+		$description = "<h2><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['class_name']."</a></h2><table><tr><td><img style=\"max-width: 100px;\" src=\"images/vehicles/".$row['class_name'].".png\"></td><td>&nbsp;</td><td style=\"vertical-align:top; \">Position: left:".round(($y/100))." top:".round(((15360-$x)/100))."</td></td>World ID:".$row['world_id']."</td></tr></table>";
 
 		$output[] = array(
-			$row['otype'] . ', ' . $row['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a></h2>',
+			$row['class_name'] . ', ' . $row['world_id'],
+			$description,
 			trim($y),
 			trim($x) + 1024,
 			$i,
-			"images/icons/" . $row['type'] . ".png"
+			"images/icons/" . $row['Type'] . ".png"
 		);
 	}
 			echo json_encode($output);
 		break;
 	case 6:
-		$sql = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.otype = 'TentStorage' and o.instance = " . $iid;
+		$sql = "select * from instance_deployable id inner join deployable d on id.deployable_id = d.id inner join object_classes oc on d.class_name = oc.classname where d.class_name = 'TentStorage' and id.instance_id = '" . $iid . "'";
 					$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
@@ -235,18 +237,18 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
 
 		$output[] = array(
-			$row['otype'] . ', ' . $row['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a></h2>',
+			$row['class_name'] . ', ' . $row['instance_id'],
+			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['class_name'] . '</a></h2>',
 			trim($y),
 			trim($x) + 1024,
 			$i,
-			"images/icons/" . $row['type'] . ".png"
+			"images/icons/" . $row['Type'] . ".png"
 		);
 	}
 			echo json_encode($output);
 		break;
 	case 7:
-		$sql = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.otype in ('Sandbag1_DZ', 'TrapBear', 'Hedgehog_DZ', 'Wire_cat1') and o.instance = " . $iid;
+		$sql = "select * from instance_deployable id inner join deployable d on id.deployable_id = d.id inner join object_classes oc on d.class_name = oc.classname where d.class_name in ('Sandbag1_DZ', 'TrapBear', 'Hedgehog_DZ', 'Wire_cat1') and id.instance_id = '" . $iid . "'";
 					$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
@@ -262,12 +264,12 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
 
 		$output[] = array(
-			$row['otype'] . ', ' . $row['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['otype'] . '</a><br><a href="admin.php?view=actions&delete='.$row['id'].'">Remove: '.$row['id'].'</a></h2>',
+			$row['class_name'] . ', ' . $row['instance_id'],
+			'<h2><a href="admin.php?view=info&show=4&id=' . $row['id'] . '">' . $row['class_name'] . '</a></h2><br><a href="admin.php?view=actions&delete='.$row['id'].'">Remove: '.$row['id'].'</a>',
 			trim($y),
 			trim($x) + 1024,
 			$i,
-			"images/icons/" . $row['type'] . ".png"
+			"images/icons/" . $row['Type'] . ".png"
 		);
 	}
 			echo json_encode($output);

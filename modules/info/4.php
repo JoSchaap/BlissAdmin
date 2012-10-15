@@ -4,11 +4,11 @@ if (isset($_GET['id'])){
 	$id = " AND id ='".$_GET['id']."'";
 }
 
-$query = "SELECT * FROM objects WHERE id = ".$_GET["id"]." LIMIT 1"; 
+$query = "SELECT iv.*, v.class_name FROM instance_vehicle iv inner join vehicle v on iv.vehicle_id = v.id WHERE iv.id = ".$_GET["id"]." and instance_id = '" . $iid . "' LIMIT 1"; 
 $res = mysql_query($query) or die(mysql_error());
 $number = mysql_num_rows($res);
 while ($row=mysql_fetch_array($res)) {
-	$Worldspace = str_replace("[", "", $row['pos']);
+	$Worldspace = str_replace("[", "", $row['worldspace']);
 	$Worldspace = str_replace("]", "", $Worldspace);
 	$Worldspace = str_replace(",", ",", $Worldspace);
 	$Worldspace = explode(",", $Worldspace);
@@ -24,22 +24,13 @@ while ($row=mysql_fetch_array($res)) {
 	//$Backpack  = str_replace('"', "", $Backpack );
 	$Backpack  = json_decode($Backpack);
 
-	
-	
 	$owner = "";
-	$ownerid = "";
-	$owneruid = "";
-	if ($row['oid'] != "0"){
-		$query = "SELECT * FROM survivor WHERE id = ".$row['oid']." LIMIT 1"; 
-		$res2	= mysql_query($query) or die(mysql_error());
-		while ($row2=mysql_fetch_array($res2)) {
-			$owner = $row2['unique_id'];
-			$ownerid = $row2['id'];
-			$owneruid = $row2['unique_id'];
-		}
-	}
+$ownerid = "";
+$owneruid = "";
+
 	
-	$Hitpoints  = $row['health'];
+	
+	$Hitpoints  = $row['parts'];
 	//$Hitpoints  ='[["wheel_1_1_steering",0.2],["wheel_2_1_steering",0],["wheel_1_4_steering",1],["wheel_2_4_steering",1],["wheel_1_3_steering",1],["wheel_2_3_steering",1],["wheel_1_2_steering",0],["wheel_2_2_steering",1],["motor",0.1],["karoserie",0.4]]';
 	$Hitpoints = str_replace("|", ",", $Hitpoints);
 	//$Backpack  = str_replace('"', "", $Backpack );
@@ -54,8 +45,8 @@ while ($row=mysql_fetch_array($res)) {
 	$vehicles_xml = XML2Array::createArray($xml);
 ?>	
 	<div id="page-heading">
-		<h1><?php echo "<title>".$row['otype']." - ".$sitename."</title>"; ?></h1>
-		<h1><?php echo $row['otype']; ?> - <?php echo $row['id']; ?> - Last save: <?php echo $row['lastupdate']; ?></h1>
+		<h1><?php echo "<title>".$row['class_name']." - ".$sitename."</title>"; ?></h1>
+		<h1><?php echo $row['class_name']; ?> - <?php echo $row['id']; ?> - Last save: <?php echo $row['last_updated']; ?></h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -77,7 +68,7 @@ while ($row=mysql_fetch_array($res)) {
 			<div id="table-content">
 				<div id="gear_vehicle">
 					<div class="gear_info">
-						<img class="playermodel" src='images/vehicles/<?php echo $row['otype']; ?>.png'/>
+						<img class="playermodel" src='images/vehicles/<?php echo $row['class_name']; ?>.png'/>
 						<div id="gps" style="margin-left:46px;margin-top:54px">
 							<div class="gpstext" style="font-size: 22px;width:60px;text-align: left;margin-left:47px;margin-top:13px">
 							<?php
@@ -95,20 +86,13 @@ while ($row=mysql_fetch_array($res)) {
 							?>
 							</div>							
 						</div>
-						<?php if($row['oid'] != "0"){?>
-						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-115px">
-							<?php echo 'Owner:&nbsp;<a href="admin.php?view=info&show=1&id='.$owneruid.'&cid='.$ownerid.'">'.$owner.'</a>';?>
-						</div>
+
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-95px">
 							<?php echo 'Damage:&nbsp;'.$row['damage'];?>
 						</div>
 						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-75px">
 							<?php echo 'Fuel:&nbsp;'.$row['fuel'];?>
 						</div>
-						<div class="statstext" style="width:180px;margin-left:205px;margin-top:-55px">
-							<?php echo 'Owner ID:&nbsp;'.$row['oid'];?>
-						</div>
-						<?php } ?>
 					</div>
 					<!-- Backpack -->
 					<div class="vehicle_gear">	
@@ -121,12 +105,12 @@ while ($row=mysql_fetch_array($res)) {
 							$freeslots = 0;
 							$freeweaps = 0;
 							$freebacks = 0;
-							$BackpackName = $row['otype'];
-							if(array_key_exists('s'.$row['otype'],$vehicles_xml['vehicles'])){
-								$maxmagazines = $vehicles_xml['vehicles']['s'.$row['otype']]['transportmaxmagazines'];
-								$maxweaps = $vehicles_xml['vehicles']['s'.$row['otype']]['transportmaxweapons'];
-								$maxbacks = $vehicles_xml['vehicles']['s'.$row['otype']]['transportmaxbackpacks'];
-								$BackpackName = $vehicles_xml['vehicles']['s'.$row['otype']]['Name'];
+							$BackpackName = $row['class_name'];
+							if(array_key_exists('s'.$row['class_name'],$vehicles_xml['vehicles'])){
+								$maxmagazines = $vehicles_xml['vehicles']['s'.$row['class_name']]['transportmaxmagazines'];
+								$maxweaps = $vehicles_xml['vehicles']['s'.$row['class_name']]['transportmaxweapons'];
+								$maxbacks = $vehicles_xml['vehicles']['s'.$row['class_name']]['transportmaxbackpacks'];
+								$BackpackName = $vehicles_xml['vehicles']['s'.$row['class_name']]['Name'];
 							}
 							if (count($Backpack) >0){
 							$bpweaponscount = count($Backpack[0][0]);

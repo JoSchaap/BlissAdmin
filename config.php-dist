@@ -9,6 +9,7 @@
 	$dbName = "dayz"; //database name
 	$sitename = "DayZ Administration"; //Admin panel name
 	$map = "chernarus"; // chernarus or lingor
+	$world = "1"; // 1= cherno, 2= lingor, 3= utes, 4= takistan, 5= panthera2
 
 	
 	//Social Media

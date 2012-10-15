@@ -40,7 +40,7 @@ if (isset($_SESSION['user_id']))
 			$pagetitle = "All players";	
 			break;
 		case 4:
-			$query = "SELECT * FROM objects WHERE instance = '" . $iid . "'";
+			$query = "SELECT iv.*, v.class_name FROM instance_vehicle iv inner join vehicle v on iv.vehicle_id = v.id WHERE instance_id = '" . $iid . "'";
 			$pagetitle = "All Ingame Objects";	
 			break;
 		case 5:
