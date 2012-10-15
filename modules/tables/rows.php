@@ -25,7 +25,7 @@ function header_vehicle($show, $chbox){
 }
 
 function row_player($row){
-	$Worldspace = str_replace("[", "", $row['pos']);
+	$Worldspace = str_replace("[", "", $row['worldspace']);
 	$Worldspace = str_replace("]", "", $Worldspace);
 	$Worldspace = explode(",", $Worldspace);
 	$x = 0;
@@ -119,7 +119,7 @@ function row_online_player($row, $player){
 	//$rowinfo = mysql_fetch_array($resinfo);
 	$x = 0;
 	$y = 0;
-	$Worldspace = str_replace("[", "", $row['pos']);
+	$Worldspace = str_replace("[", "", $row['worldspace']);
 	$Worldspace = str_replace("]", "", $Worldspace);
 	$Worldspace = explode(",", $Worldspace);					
 	if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
@@ -219,7 +219,7 @@ function row_online_player($row, $player){
 function row_vehicle($row, $chbox){
 	$x = 0;
 	$y = 0;
-	$Worldspace = str_replace("[", "", $row['pos']);
+	$Worldspace = str_replace("[", "", $row['worldspace']);
 	$Worldspace = str_replace("]", "", $Worldspace);
 	$Worldspace = explode(",", $Worldspace);					
 	if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
