@@ -275,7 +275,45 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 			echo json_encode($output);
 		break;
 	case 8;
-	$sql = "select s.id, p.name, 'Player' as type, s.pos as pos, '" . $iid . "' as instance, s.is_dead as is_dead, s.unique_id as unique_id from profile p join survivor s on p.unique_id = s.unique_id where s.is_dead = 0 and last_update > now() - interval 1 minute";
+	
+	$sql = "select
+  s.id,
+  p.name class_name,
+  'Player' as type,
+  s.worldspace
+from
+  profile p
+  join survivor s on p.unique_id = s.unique_id
+  join world w on s.world_id = w.id
+  join instance i on w.id = i.world_id and i.id = '" . $iid . "'
+where
+  s.is_dead = 0
+  and s.last_updated > now() - interval 1 minute
+union
+select
+  iv.id,
+  v.class_name,
+  oc.type,
+  iv.worldspace
+from
+  instance_vehicle iv
+  join vehicle v on iv.vehicle_id = v.id
+  join object_classes oc on v.class_name = oc.classname
+where iv.instance_id = '" . $iid . "'
+union
+select
+  id.id,
+  d.class_name,
+  oc.type,
+  id.worldspace
+from
+  instance_deployable id
+  join deployable d on id.deployable_id = d.id
+  join object_classes oc on d.class_name = oc.classname
+where
+  id.instance_id = '" . $iid . "'";
+
+	$pagetitle = "Current Ingame vehicles";
 	$result = mysql_query($sql);
 	$output = array();
 	for ($i = 0; $i < mysql_num_rows($result); $i++) {
@@ -289,44 +327,20 @@ $sql = "select s.id, p.name, 'Player' as type, s.worldspace as worldspace, s.sur
 		$y = 0;
 		if(array_key_exists(2,$Worldspace)){$x = $Worldspace[2];}
 		if(array_key_exists(1,$Worldspace)){$y = $Worldspace[1];}
+		$description = "<h2><a href=\"admin.php?view=info&show=4&id=".$row['id']."\">".$row['class_name']."</a></h2><table><tr><td><img style=\"max-width: 100px;\" src=\"images/vehicles/".$row['class_name'].".png\"></td><td>&nbsp;</td><td style=\"vertical-align:top; \"><h2>Position:</h2>left:".round(($y/100))." top:".round(((15360-$x)/100))."</td></td></tr></table>";
 
 		$output[] = array(
-			$row['name'] . ', ' . $row['id'],
-			'<h2><a href="admin.php?view=info&show=1&id=' . $row['unique_id'] . '">' . $row['name'] . '</a></h2>',
+			$row['class_name'] . ', ' . $row['id'],
+			$description,
 			trim($y),
 			trim($x) + 1024,
 			$i,
-			"images/icons/player.png"
+			"images/icons/everything/" . $row['type'] . ".png"
 		);
 	}
 		echo json_encode($output);
-		
-	$sql1 = "select id, otype, type, pos, instance from objects o join object_classes oc on o.otype = oc.classname where o.instance = " . $iid ." and o.oid = 0";
-	$result1 = mysql_query($sql1);
-	$output1 = array();
-	for ($i1 = 0; $i1 < mysql_num_rows($result1); $i1++) {
-		$row1 = mysql_fetch_assoc($result1);
 
-		$Worldspace1 = str_replace("[", "", $row1['pos']);
-		$Worldspace1 = str_replace("]", "", $Worldspace1);
-		$Worldspace1 = str_replace(",", ",", $Worldspace1);
-		$Worldspace1 = explode(",", $Worldspace1);
-		$x1 = 0;
-		$y1 = 0;
-		if(array_key_exists(2,$Worldspace1)){$x = $Worldspace1[2];}
-		if(array_key_exists(1,$Worldspace1)){$y = $Worldspace1[1];}
-
-		$output1[] = array(
-			$row1['otype'] . ', ' . $row1['instance'],
-			'<h2><a href="admin.php?view=info&show=4&id=' . $row1['id'] . '">' . $row1['otype'] . '</a></h2>',
-			trim($y),
-			trim($x) + 1024,
-			$i1,
-			"images/icons/" . $row1['type'] . ".png"
-		);
-	}
-		echo json_encode($output1);
-	break;
+		break;
 	default:
 		die("[]");
 	}	
