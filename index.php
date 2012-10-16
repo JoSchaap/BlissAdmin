@@ -63,10 +63,10 @@ mysql_select_db($dbName) or die (mysql_error());
 						$alivebandits = mysql_query("SELECT count(*) FROM survivor WHERE is_dead=0 And Model like 'Bandit1_DZ'");
 						$num_alivebandits = mysql_fetch_array($alivebandits);
 						
-						$totalVehicles = mysql_query("SELECT count(*) FROM objects WHERE oid=0 AND instance = " . $iid);
+						$totalVehicles = mysql_query("SELECT count(*) FROM instance_vehicle WHERE instance = " . $iid);
 						$num_totalVehicles = mysql_fetch_array($totalVehicles);
 						
-						$Played24h = mysql_query("SELECT count(*) from survivor WHERE last_update > now() - INTERVAL 1 DAY");
+						$Played24h = mysql_query("SELECT count(*) from survivor WHERE last_updated > now() - INTERVAL 1 DAY");
 						$num_Played24h = mysql_fetch_array($Played24h);
 					}
 					
